@@ -22,6 +22,7 @@ const ComponentsContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -20rem;
 `;
 
 const InfoCard = styled(motion.div)`
@@ -34,7 +35,7 @@ const InfoCard = styled(motion.div)`
 
 const CardTitle = styled.h3`
   font-size: 1.1rem;
-  color: var(--primary);
+  color: white;
   margin-bottom: 0.8rem;
   font-weight: 600;
 `;
@@ -42,13 +43,14 @@ const CardTitle = styled.h3`
 const CardContent = styled.div`
   font-size: 0.95rem;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
+  color: white;
 `;
 
 const ListItem = styled.li`
   margin-bottom: 0.5rem;
   position: relative;
   padding-left: 1.2rem;
+  color: white;
   
   &:before {
     content: '•';
@@ -62,7 +64,7 @@ const ListItem = styled.li`
 const ThreadDiagram = styled.div`
   width: 100%;
   max-width: 500px;
-  height: 500px;
+  height: 440px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -71,16 +73,16 @@ const ThreadDiagram = styled.div`
 
 const ThreadContainer = styled(motion.div)`
   width: 450px;
-  height: 450px;
-  border: 2px solid var(--primary);
+  height: 430px;
+  border: 1px solid rgba(74, 144, 226, 0.3);
   border-radius: 8px;
-  background: rgba(74, 144, 226, 0.05);
+  background: rgba(10, 25, 47, 0.5);
   display: grid;
   grid-template-rows: auto auto 1fr 1fr auto;
-  gap: 15px;
-  padding: 20px;
+  gap: 10px;
+  padding: 15px;
   position: relative;
-  box-shadow: 0 0 20px rgba(74, 144, 226, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 const ThreadTitle = styled.div`
@@ -96,10 +98,11 @@ const ThreadTitle = styled.div`
 
 const ComponentSection = styled(motion.div)<{ color: string }>`
   border: 1px solid ${props => props.color};
-  border-radius: 6px;
-  background: ${props => `${props.color}10`};
+  border-radius: 8px;
+  background: rgba(10, 25, 47, 0.5);
   padding: 1rem;
   position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ComponentLabel = styled.div<{ color: string }>`
@@ -121,8 +124,8 @@ const ComponentContent = styled.div`
 
 const ThreadID = styled(motion.div)`
   padding: 0.8rem;
-  border-radius: 6px;
-  background: rgba(74, 144, 226, 0.1);
+  border-radius: 8px;
+  background: rgba(10, 25, 47, 0.5);
   border: 1px solid rgba(74, 144, 226, 0.3);
   display: flex;
   align-items: center;
@@ -130,6 +133,7 @@ const ThreadID = styled(motion.div)`
   font-size: 1rem;
   color: var(--primary-light);
   font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const RegistersSection = styled(motion.div)`
@@ -156,14 +160,15 @@ const StackHeapContainer = styled.div`
 
 const StackSection = styled(motion.div)`
   flex: 1;
-  background: rgba(80, 200, 120, 0.05);
+  background: rgba(10, 25, 47, 0.5);
   border: 1px solid rgba(80, 200, 120, 0.3);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const StackItem = styled(motion.div)<{ index: number }>`
@@ -178,14 +183,15 @@ const StackItem = styled(motion.div)<{ index: number }>`
 
 const HeapSection = styled(motion.div)`
   flex: 1;
-  background: rgba(255, 107, 107, 0.05);
+  background: rgba(10, 25, 47, 0.5);
   border: 1px solid rgba(255, 107, 107, 0.3);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 0.8rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const HeapItem = styled(motion.div)<{ size: number }>`
@@ -210,13 +216,14 @@ const StateSection = styled(motion.div)`
 const StateItem = styled.div<{ active?: boolean }>`
   flex: 1;
   padding: 0.7rem;
-  background: ${props => props.active ? 'rgba(147, 51, 234, 0.2)' : 'rgba(147, 51, 234, 0.05)'};
+  background: ${props => props.active ? 'rgba(147, 51, 234, 0.2)' : 'rgba(10, 25, 47, 0.5)'};
   border: 1px solid rgba(147, 51, 234, ${props => props.active ? 0.6 : 0.3});
-  border-radius: 6px;
+  border-radius: 8px;
   text-align: center;
   font-size: 0.9rem;
   color: ${props => props.active ? 'rgba(147, 51, 234, 1)' : 'rgba(147, 51, 234, 0.7)'};
   font-weight: ${props => props.active ? 600 : 400};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const ThreadComponents: React.FC = () => {

@@ -15,9 +15,11 @@ const ContentContainer = styled.div`
 
 const CardRow = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 20px;
   width: 100%;
+  align-items: flex-start;
 `;
 
 const Card = styled(motion.div)<{ width?: string }>`

@@ -8,6 +8,7 @@ const ContentContainer = styled.div`
   width: 100%;
   height: 100%;
   gap: 2rem;
+  align-items: flex-start;
 `;
 
 const TypesContainer = styled(motion.div)`
@@ -26,8 +27,9 @@ const DiagramContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   position: relative;
+  padding-top: 2rem;
 `;
 
 const TypeCard = styled(motion.div)`
@@ -38,6 +40,7 @@ const TypeCard = styled(motion.div)`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
+  height: fit-content;
 `;
 
 const TypeIcon = styled.div<{ color: string }>`
@@ -85,9 +88,8 @@ const VisualContainer = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  padding: 2rem 0;
+  justify-content: flex-start;
+  padding: 0;
 `;
 
 const ThreadGroup = styled(motion.div)<{ type: string }>`
@@ -96,26 +98,30 @@ const ThreadGroup = styled(motion.div)<{ type: string }>`
   position: relative;
   border-radius: 6px;
   padding: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   
   ${props => props.type === 'preemptive' && `
     background: rgba(74, 144, 226, 0.1);
     border: 1px solid rgba(74, 144, 226, 0.3);
+    margin-top: 1.5rem;
   `}
   
   ${props => props.type === 'cooperative' && `
     background: rgba(255, 180, 50, 0.1);
     border: 1px solid rgba(255, 180, 50, 0.3);
+    margin-top: 3.5rem;
   `}
   
   ${props => props.type === 'smt' && `
     background: rgba(80, 200, 120, 0.1);
     border: 1px solid rgba(80, 200, 120, 0.3);
+    margin-top: 3.5rem;
   `}
   
   ${props => props.type === 'parallel' && `
     background: rgba(255, 107, 107, 0.1);
     border: 1px solid rgba(255, 107, 107, 0.3);
+    margin-top: 3.5rem;
   `}
 `;
 
@@ -219,6 +225,7 @@ const TypesOfMultiThreading: React.FC = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.4 }}
+            style={{ marginTop: '0', marginBottom: '0' }}
           >
             <TypeIcon color="255, 107, 107">P</TypeIcon>
             <TypeContent>

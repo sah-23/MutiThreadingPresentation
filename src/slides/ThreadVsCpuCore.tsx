@@ -15,9 +15,11 @@ const ContentContainer = styled.div`
 
 const CardRow = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   gap: 1rem;
   width: 100%;
+  align-items: flex-start;
 `;
 
 const Card = styled(motion.div)<{ width?: string }>`
@@ -332,8 +334,7 @@ const SchedulerArrow = styled(motion.div)`
   }
 `;
 
-const ConceptImage = styled.div`
-  margin: 0 auto;
+const ConceptImage = styled.div`  margin: 0 auto;
   font-size: 2.5rem;
   text-align: center;
   color: ${props => props.color || 'var(--primary)'};
