@@ -9,15 +9,30 @@ import BackgroundEffect from './components/BackgroundEffect';
 import Controls from './components/Controls';
 import { NavigationProvider, useNavigation } from './context/NavigationContext';
 import GridForeground from './components/GridForeground';
+import SlideInput from './components/SlideInput';
 
 // Import our slides
 import Introduction from './slides/Introduction';
 import PresentationOverview from './slides/PresentationOverview';
+import JobsVsProcesses from './slides/JobsVsProcesses';
+import OsAndCpu from './slides/OsAndCpu';
+import OsAndCpu2 from './slides/OsAndCpu2';
 import SequentialProgramming from './slides/SequentialProgramming';
 import Chrome from './slides/Chrome';
 import MultiThreadingTimeSlicing from './slides/MultiThreadingTimeSlicing';
 import TimeSlicingRelationship from './slides/TimeSlicingRelationship';
+import TimeSlicingVisual from './slides/TimeSlicingVisual';
+import TimeSlicing3 from './slides/TimeSlicing3';
+import BenefitsOfMultiThreading from './slides/BenefitsOfMultiThreading';
+import ThreadWorkingModel from './slides/ThreadWorkingModel';
+import MultiThreadingModes from './slides/MultiThreadingModes';
+import TimeSlicingPython from './slides/TimeSlicingPython';
+import ThreadingRealWorld from './slides/ThreadingRealWorld';
 import RealWorldExample from './slides/RealWorldExample';
+import ContextSwitchingConcurrency from './slides/ContextSwitchingConcurrency';
+import ContextSwitching2 from './slides/ContextSwitching2';
+import OverheadProblem from './slides/OverheadProblem';
+import ThreadSolution from './slides/ThreadSolution';
 import ConcurrencyVsParallelism from './slides/ConcurrencyVsParallelism';
 import ThreadVsProcess from './slides/ThreadVsProcess';
 import ProcessVsThread from './slides/ProcessVsThread';
@@ -237,17 +252,38 @@ const AppContent: React.FC = () => {
     // Presentation Overview
     <PresentationOverview />,
     
+    // Jobs vs Processes
+    <JobsVsProcesses />,
+    
+    // The OS and the CPU
+    <OsAndCpu />,
+    
+    // The OS and the CPU - Part 2
+    <OsAndCpu2 />,
+    
     // Sequential Programming
     <SequentialProgramming />,
     
     // Chrome
     <Chrome />,
     
+    // Concurrency vs Parallelism
+    <ConcurrencyVsParallelism />,
+    
     // Real World Example
     <RealWorldExample />,
     
-    // Concurrency vs Parallelism
-    <ConcurrencyVsParallelism />,
+    // Context Switching in Concurrency
+    <ContextSwitchingConcurrency />,
+    
+    // Context Switching 2
+    <ContextSwitching2 />,
+    
+    // The Overhead Problem
+    <OverheadProblem />,
+    
+    // The Thread Solution
+    <ThreadSolution />,
     
     // Thread vs Process
     <ThreadVsProcess />,
@@ -267,11 +303,32 @@ const AppContent: React.FC = () => {
     // Time Slicing Relationship
     <TimeSlicingRelationship />,
     
-    // Types of Multi-Threading
-    <TypesOfMultiThreading />,
+    // Time Slicing Visualization
+    <TimeSlicingVisual />,
+    
+    // Time Slicing Key Points
+    <TimeSlicing3 />,
+    
+    // Benefits of Multi-Threading
+    <BenefitsOfMultiThreading />,
+    
+    // How Do We Actually Work With Threads
+    <ThreadWorkingModel />,
+    
+    // Multi-threading Modes and Thread Operations
+    <MultiThreadingModes />,
+    
+    // Time Slicing Python Example
+    <TimeSlicingPython />,
+    
+    // Threading Real World Example
+    <ThreadingRealWorld />,
     
     // Thread Components
     <ThreadComponents />,
+    
+    // Types of Multi-Threading
+    <TypesOfMultiThreading />,
     
     // Thread Creation and Lifecycle
     <ThreadLifecycle />,
@@ -322,6 +379,7 @@ const AppContent: React.FC = () => {
   return (
     <AppContainer>
       <GlobalStyles />
+      <SlideInput />
       
       {/* Custom Cursor */}
       {/* <CustomCursor /> */}

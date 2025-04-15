@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { useNavigation } from '../context/NavigationContext';
 
 // Slide props interface
 interface SlideProps {
@@ -19,6 +20,22 @@ const SlideContainer = styled(motion.div)`
   align-items: center;
   position: relative;
   overflow: hidden;
+`;
+
+// Slide number indicator
+const SlideNumber = styled.div`
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(25, 35, 60, 0.7);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(100, 120, 200, 0.3);
+  font-weight: 600;
+  z-index: 25;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 `;
 
 // Animation variants
@@ -54,6 +71,8 @@ const SubtitleText = styled.h2`
 
 // Slide component
 const Slide: React.FC<SlideProps> = ({ children, title, subtitle }) => {
+  const { currentSlide, totalSlides } = useNavigation();
+  
   return (
     <SlideContainer
       initial="initial"
@@ -62,6 +81,9 @@ const Slide: React.FC<SlideProps> = ({ children, title, subtitle }) => {
       transition={{ duration: 0.6 }}
       variants={slideVariants}
     >
+      {/* Slide number */}
+      <SlideNumber>{currentSlide} / {totalSlides}</SlideNumber>
+      
       {/* Visual flash effect on slide transition */}
       <TransitionFlash 
         initial={{ opacity: 0 }}

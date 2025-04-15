@@ -587,7 +587,7 @@ const Introduction: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Multi-Threading and Modern CPU Architecture
+          Multi-Threading and How Modern CPUs Handle It in 2025
         </Title>
         
         <Subtitle

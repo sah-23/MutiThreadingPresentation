@@ -6,7 +6,10 @@ interface NavigationContextType {
   totalSlides: number;
   goToNextSlide: () => void;
   goToPreviousSlide: () => void;
+  goToSlide: (slideNumber: number) => void;
   setTotalSlides: (total: number) => void;
+  isSlideInputVisible: boolean;
+  setSlideInputVisible: (visible: boolean) => void;
 }
 
 // Create the context with default placeholder values
@@ -15,13 +18,17 @@ const NavigationContext = createContext<NavigationContextType>({
   totalSlides: 0,
   goToNextSlide: () => {},
   goToPreviousSlide: () => {},
+  goToSlide: () => {},
   setTotalSlides: () => {},
+  isSlideInputVisible: false,
+  setSlideInputVisible: () => {},
 });
 
 // Provider component to wrap around the app
 export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [totalSlides, setTotalSlides] = useState(0);
+  const [isSlideInputVisible, setSlideInputVisible] = useState(false);
 
   const goToNextSlide = () => {
     if (currentSlide < totalSlides) {
@@ -35,6 +42,12 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     }
   };
 
+  const goToSlide = (slideNumber: number) => {
+    if (slideNumber >= 1 && slideNumber <= totalSlides) {
+      setCurrentSlide(slideNumber);
+    }
+  };
+
   return (
     <NavigationContext.Provider
       value={{
@@ -42,7 +55,10 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         totalSlides,
         goToNextSlide,
         goToPreviousSlide,
+        goToSlide,
         setTotalSlides,
+        isSlideInputVisible,
+        setSlideInputVisible,
       }}
     >
       {children}
