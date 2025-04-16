@@ -26,6 +26,10 @@ import TimeSlicing3 from './slides/TimeSlicing3';
 import BenefitsOfMultiThreading from './slides/BenefitsOfMultiThreading';
 import ThreadWorkingModel from './slides/ThreadWorkingModel';
 import MultiThreadingModes from './slides/MultiThreadingModes';
+import UserModeThreading from './slides/UserModeThreading';
+import KernelModeThreading from './slides/KernelModeThreading';
+import HybridThreading from './slides/HybridThreading';
+import PythonMultiThreading from './slides/PythonMultiThreading';
 import TimeSlicingPython from './slides/TimeSlicingPython';
 import ThreadingRealWorld from './slides/ThreadingRealWorld';
 import RealWorldExample from './slides/RealWorldExample';
@@ -44,6 +48,17 @@ import ThreadLifecycle from './slides/ThreadLifecycle';
 import BasicPythonThreading from './slides/BasicPythonThreading';
 import CPUArchitecture from './slides/CPUArchitecture';
 import SMT from './slides/SMT';
+import RaceCondition from './slides/RaceCondition';
+import MutexSolution from './slides/MutexSolution';
+import RaceCondition2 from './slides/RaceCondition2';
+import PythonGIL from './slides/PythonGIL';
+import GILsProblem from './slides/GILsProblem';
+import GILStillUseful from './slides/GILStillUseful';
+import PythonParallelism from './slides/PythonParallelism';
+import CpuBoundExample from './slides/CpuBoundExample';
+import GilExample from './slides/GilExample';
+import MultiprocessingExample from './slides/MultiprocessingExample';
+import TheEnd from './slides/TheEnd';
 
 // Custom cursor component
 const CustomCursor = () => {
@@ -318,29 +333,50 @@ const AppContent: React.FC = () => {
     // Multi-threading Modes and Thread Operations
     <MultiThreadingModes />,
     
-    // Time Slicing Python Example
-    <TimeSlicingPython />,
+    // User Mode Threading
+    <UserModeThreading />,
     
-    // Threading Real World Example
-    <ThreadingRealWorld />,
+    // Kernel Mode Threading
+    <KernelModeThreading />,
     
-    // Thread Components
-    <ThreadComponents />,
+    // Hybrid Threading Model
+    <HybridThreading />,
     
-    // Types of Multi-Threading
-    <TypesOfMultiThreading />,
+    // Python Multi-Threading
+    <PythonMultiThreading />,
     
-    // Thread Creation and Lifecycle
-    <ThreadLifecycle />,
+    // Race Condition
+    <RaceCondition />,
     
-    // Basic Python Thread Example
-    <BasicPythonThreading />,
+    // Mutex Solution
+    <MutexSolution />,
     
-    // CPU Architecture and Threading
-    <CPUArchitecture />,
+    // Race Condition 2
+    <RaceCondition2 />,
     
-    // Simultaneous Multi-Threading (SMT)
-    <SMT />
+    // Python GIL
+    <PythonGIL />,
+    
+    // GIL's Problem
+    <GILsProblem />,
+    
+    // Why is GIL still useful
+    <GILStillUseful />,
+    
+    // Then How to really multi thread in python
+    <PythonParallelism />,
+    
+    // An Example
+    <CpuBoundExample />,
+    
+    // GIL Example
+    <GilExample />,
+    
+    // Multi processing Example
+    <MultiprocessingExample />,
+    
+    // The End
+    <TheEnd />
   ];
 
   // Set total slides when component mounts
@@ -352,7 +388,9 @@ const AppContent: React.FC = () => {
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') {
-        goToNextSlide();
+        if (currentSlide < totalSlides) {
+          goToNextSlide();
+        }
       } else if (e.key === 'ArrowLeft') {
         goToPreviousSlide();
       }
@@ -360,7 +398,7 @@ const AppContent: React.FC = () => {
     
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [goToNextSlide, goToPreviousSlide]);
+  }, [goToNextSlide, goToPreviousSlide, currentSlide, totalSlides]);
 
   React.useEffect(() => {
     // Add body styles to support zoom

@@ -7,17 +7,17 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 90%; /* Reduced height to avoid scrolling */
   padding: 0;
   justify-content: center;
   align-items: center;
-  margin-top: -0.5rem;
+  margin-top: -0.8rem; /* Adjusted to move content up slightly */
 `;
 
 const Card = styled(motion.div)`
   background: rgba(25, 35, 60, 0.8);
   border-radius: 16px;
-  padding: 1.4rem;
+  padding: 1.2rem; /* Reduced padding to save space */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   border: 3px solid rgba(100, 120, 200, 0.4);
   width: 100%;
@@ -30,6 +30,7 @@ const SectionsContainer = styled.div`
   display: flex;
   gap: 2rem;
   width: 100%;
+  transform: translateX(-6px); /* Move 6px to the left */
 `;
 
 const Section = styled.div`
@@ -41,12 +42,12 @@ const Section = styled.div`
 const SectionTitle = styled.h3`
   font-size: 1.4rem;
   color: var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem; /* Reduced margin */
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin-left: -1.25rem;
+  transform: translateX(-20px); /* Move section titles further left */
   
   &::before {
     content: '';
@@ -61,7 +62,7 @@ const SectionTitle = styled.h3`
 const ModelsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem; /* Reduced gap */
 `;
 
 const ModelCard = styled(motion.div)`
@@ -96,13 +97,13 @@ const ModelTitle = styled.h4`
 const ModelDescription = styled.p`
   font-size: 1rem;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
+  color: white; /* Changed to full white */
 `;
 
 const OperationsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 0.8rem; /* Reduced gap */
 `;
 
 const OperationCard = styled(motion.div)`
@@ -140,14 +141,14 @@ const OperationTitle = styled.h4`
 const OperationDescription = styled.p`
   font-size: 0.9rem;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.9);
+  color: white; /* Changed to full white */
 `;
 
 const IntroText = styled.p`
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 1.05rem;
-  line-height: 1.5;
-  margin-bottom: 1.2rem;
+  color: white; /* Changed to full white */
+  font-size: 1rem; /* Slightly smaller */
+  line-height: 1.4;
+  margin-bottom: 0.8rem; /* Reduced margin */
 `;
 
 // SVG Components for thread model diagrams with larger dimensions
@@ -253,8 +254,8 @@ const MultiThreadingModes: React.FC = () => {
                   <ModelContent>
                     <ModelTitle>Kernel-Mode Threading</ModelTitle>
                     <ModelDescription>
-                      Threads created and managed directly by the operating system kernel. 
-                      Provides true parallelism and better handling of blocking operations but incurs higher overhead.
+                      Threads managed directly by the operating system kernel. Provides true parallelism 
+                      with CPU cores and better system integration, but higher overhead for creation and switching.
                     </ModelDescription>
                   </ModelContent>
                 </ModelCard>
@@ -268,10 +269,10 @@ const MultiThreadingModes: React.FC = () => {
                     <HybridThreadsSVG />
                   </ModelDiagram>
                   <ModelContent>
-                    <ModelTitle>Hybrid Threading</ModelTitle>
+                    <ModelTitle>Hybrid Threading (Many-to-Many)</ModelTitle>
                     <ModelDescription>
-                      Combines both approaches by mapping multiple user-level threads to a smaller set of kernel threads.
-                      Balances efficiency with parallelism and provides flexibility in thread management.
+                      User threads multiplexed onto kernel threads, combining advantages of both models. 
+                      Balances resource utilization with performance but adds implementation complexity.
                     </ModelDescription>
                   </ModelContent>
                 </ModelCard>
@@ -279,63 +280,64 @@ const MultiThreadingModes: React.FC = () => {
             </Section>
             
             <Section>
-              <SectionTitle>Essential Thread Operations</SectionTitle>
-              <IntroText>
-                Regardless of the threading model used, all threading systems must support these fundamental operations:
-              </IntroText>
+              <SectionTitle>Key Thread Operations</SectionTitle>
               <OperationsContainer>
                 <OperationCard
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.6 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
                 >
-                  <OperationIcon>🔨</OperationIcon>
+                  <OperationIcon>🔄</OperationIcon>
                   <OperationContent>
                     <OperationTitle>Thread Creation</OperationTitle>
                     <OperationDescription>
-                      Establishing new execution flows with their own stacks and context.
+                      Creating new threads with initial state, stack space, 
+                      and entry point function (e.g., pthread_create in C)
                     </OperationDescription>
                   </OperationContent>
                 </OperationCard>
                 
                 <OperationCard
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.7 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
                 >
                   <OperationIcon>🛑</OperationIcon>
                   <OperationContent>
                     <OperationTitle>Thread Termination</OperationTitle>
                     <OperationDescription>
-                      Properly cleaning up resources when a thread completes its execution.
+                      Voluntarily finishing execution or being forcibly terminated, 
+                      with optional result passing (pthread_exit, pthread_cancel)
                     </OperationDescription>
                   </OperationContent>
                 </OperationCard>
                 
                 <OperationCard
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.8 }}
-                >
-                  <OperationIcon>⏸️</OperationIcon>
-                  <OperationContent>
-                    <OperationTitle>Thread Blocking</OperationTitle>
-                    <OperationDescription>
-                      Temporarily suspending thread execution when waiting for resources.
-                    </OperationDescription>
-                  </OperationContent>
-                </OperationCard>
-                
-                <OperationCard
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.9 }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
                 >
                   <OperationIcon>🔄</OperationIcon>
                   <OperationContent>
-                    <OperationTitle>Thread Manipulation</OperationTitle>
+                    <OperationTitle>Synchronization</OperationTitle>
                     <OperationDescription>
-                      Operations like changing priorities, suspending, resuming, or synchronizing threads.
+                      Coordinating thread execution using mutexes, semaphores, 
+                      condition variables, and other primitives to avoid race conditions
+                    </OperationDescription>
+                  </OperationContent>
+                </OperationCard>
+                
+                <OperationCard
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 0.6 }}
+                >
+                  <OperationIcon>⏳</OperationIcon>
+                  <OperationContent>
+                    <OperationTitle>Scheduling</OperationTitle>
+                    <OperationDescription>
+                      Thread prioritization and CPU time allocation, usually handled by 
+                      the kernel in kernel-mode or library in user-mode threading
                     </OperationDescription>
                   </OperationContent>
                 </OperationCard>
