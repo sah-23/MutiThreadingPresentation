@@ -170,7 +170,7 @@ const BasicPythonThreading: React.FC = () => {
               indent={1}
               highlight
             >
-              <Keyword>print</Keyword>(<StringLiteral>f"Thread {name} starting"</StringLiteral>)
+              <Keyword>print</Keyword>(<StringLiteral>{"\"Thread " + name + " starting\""}</StringLiteral>)
             </CodeLine>
             <CodeLine
               initial={{ opacity: 0, y: 5 }}
@@ -196,7 +196,7 @@ const BasicPythonThreading: React.FC = () => {
               indent={2}
               highlight
             >
-              <Keyword>print</Keyword>(<StringLiteral>f"Thread {name}: step {i}"</StringLiteral>)
+              <Keyword>print</Keyword>(<StringLiteral>{"\"Thread " + name + ": step \" + str(i)"}</StringLiteral>)
             </CodeLine>
             <CodeLine
               initial={{ opacity: 0, y: 5 }}
@@ -205,7 +205,7 @@ const BasicPythonThreading: React.FC = () => {
               indent={1}
               highlight
             >
-              <Keyword>print</Keyword>(<StringLiteral>f"Thread {name} finished"</StringLiteral>)
+              <Keyword>print</Keyword>(<StringLiteral>{"\"Thread " + name + " finished\""}</StringLiteral>)
             </CodeLine>
             <CodeLine
               initial={{ opacity: 0, y: 5 }}

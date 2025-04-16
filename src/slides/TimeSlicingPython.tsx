@@ -119,7 +119,7 @@ const TimeSlicingPython: React.FC = () => {
                 {'  '}<Comment># Simulating a CPU-intensive task</Comment>{'\n'}
                 {'  '}<Keyword>for</Keyword> i <Keyword>in</Keyword> <Function>range</Function>(iterations):{'\n'}
                 {'    '}<Keyword>with</Keyword> output_lock:{'\n'}
-                {'      '}<Function>print</Function>(<String>f"Thread {thread_id}: Working on iteration {i+1}/{iterations}"</String>){'\n'}
+                {'      '}<Function>print</Function>(<String>{"\"Thread \" + str(thread_id) + \": Working on iteration \" + str(i+1) + \"/\" + str(iterations)"}</String>){'\n'}
                 {'    '}<Comment># CPU-bound calculation to demonstrate time slicing</Comment>{'\n'}
                 {'    '}result = 0{'\n'}
                 {'    '}<Keyword>for</Keyword> j <Keyword>in</Keyword> <Function>range</Function>(5000000):{'\n'}

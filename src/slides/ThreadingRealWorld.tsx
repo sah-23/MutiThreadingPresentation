@@ -191,7 +191,7 @@ const ThreadingRealWorld: React.FC = () => {
                 {'    '}<Keyword>try</Keyword>:{'\n'}
                 {'      '}url = url_queue.<Function>get</Function>(block=<Keyword>False</Keyword>){'\n'}
                 {'      '}<Keyword>with</Keyword> print_lock:{'\n'}
-                {'        '}<Function>print</Function>(<String>f"Thread {worker_id}: Processing {url}"</String>){'\n\n'}
+                {'        '}<Function>print</Function>(<String>{"\"Thread \" + str(worker_id) + \": Processing \" + url"}</String>){'\n\n'}
                 {'      '}<Comment># Simulate network request with potential blocking I/O</Comment>{'\n'}
                 {'      '}response = requests.<Function>get</Function>(url, timeout=5){'\n'}
                 {'      '}soup = BeautifulSoup(response.content, <String>'html.parser'</String>){'\n'}
@@ -206,7 +206,7 @@ const ThreadingRealWorld: React.FC = () => {
                 {'      '}<Keyword>break</Keyword>{'\n'}
                 {'    '}<Keyword>except</Keyword> <Function>Exception</Function> <Keyword>as</Keyword> e:{'\n'}
                 {'      '}<Keyword>with</Keyword> print_lock:{'\n'}
-                {'        '}<Function>print</Function>(<String>f"Thread {worker_id}: Error on {url} - {str(e)}"</String>){'\n'}
+                {'        '}<Function>print</Function>(<String>{"\"Thread \" + str(worker_id) + \": Error on \" + url + \" - \" + str(e)"}</String>){'\n'}
                 {'      '}url_queue.<Function>task_done</Function>(){'\n\n'}
                 <Comment># Add URLs to the queue</Comment>{'\n'}
                 <Keyword>for</Keyword> url <Keyword>in</Keyword> [<String>'https://example.com'</String>, <String>'https://python.org'</String>, <String>'...'</String>]:{'\n'}
@@ -220,7 +220,7 @@ const ThreadingRealWorld: React.FC = () => {
                 <Comment># Wait for all URLs to be processed</Comment>{'\n'}
                 url_queue.<Function>join</Function>(){'\n\n'}
                 <Comment># Print results</Comment>{'\n'}
-                <Function>print</Function>(<String>f"Scraped {len(results)} pages successfully"</String>)
+                <Function>print</Function>(<String>{"\"Scraped \" + str(len(results)) + \" pages successfully\""}</String>)
               </CodeBlock>
             </CardContent>
           </Card>
