@@ -209,29 +209,29 @@ const HybridThreading: React.FC = () => {
                     <path d="M300 105 L260 160" stroke="#f0a04b" strokeWidth="1.5" strokeDasharray="3,2" />
                     
                     {/* Kernel space */}
-                    <rect x="10" y="140" width="360" height="110" rx="5" fill="rgba(40, 60, 100, 0.3)" stroke="#5070B0" strokeWidth="2" />
+                    <rect x="10" y="140" width="360" height="130" rx="5" fill="rgba(40, 60, 100, 0.3)" stroke="#5070B0" strokeWidth="2" />
                     <text x="65" y="160" fontSize="14" fill="white">Kernel Space</text>
                     
                     {/* LWPs box */}
-                    <rect x="30" y="170" width="320" height="70" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#f0a04b" strokeWidth="2" />
+                    <rect x="30" y="170" width="320" height="90" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#f0a04b" strokeWidth="2" />
                     <text x="190" y="190" fontSize="12" textAnchor="middle" fill="#f0a04b" fontWeight="bold">Lightweight Processes (LWPs)</text>
                     
                     {/* LWPs */}
-                    <circle cx="60" cy="220" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
-                    <text x="60" y="225" fontSize="12" textAnchor="middle" fill="white">LWP1</text>
+                    <circle cx="60" cy="230" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
+                    <text x="60" y="235" fontSize="12" textAnchor="middle" fill="white">LWP1</text>
                     
-                    <circle cx="100" cy="220" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
-                    <text x="100" y="225" fontSize="12" textAnchor="middle" fill="white">LWP2</text>
+                    <circle cx="100" cy="230" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
+                    <text x="100" y="235" fontSize="12" textAnchor="middle" fill="white">LWP2</text>
                     
-                    <circle cx="180" cy="220" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
-                    <text x="180" y="225" fontSize="12" textAnchor="middle" fill="white">LWP3</text>
+                    <circle cx="180" cy="230" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
+                    <text x="180" y="235" fontSize="12" textAnchor="middle" fill="white">LWP3</text>
                     
-                    <circle cx="260" cy="220" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
-                    <text x="260" y="225" fontSize="12" textAnchor="middle" fill="white">LWP4</text>
+                    <circle cx="260" cy="230" r="15" fill="rgba(240, 160, 75, 0.3)" stroke="#f0a04b" strokeWidth="1.5" />
+                    <text x="260" y="235" fontSize="12" textAnchor="middle" fill="white">LWP4</text>
                     
                     {/* Explanatory text */}
-                    <text x="30" y="250" fontSize="10" fill="white">M User Threads</text>
-                    <text x="290" y="250" fontSize="10" textAnchor="end" fill="white">N Kernel Threads (LWPs)</text>
+                    <text x="30" y="270" fontSize="10" fill="white">M User Threads</text>
+                    <text x="290" y="270" fontSize="10" textAnchor="end" fill="white">N Kernel Threads (LWPs)</text>
                   </svg>
                 </HybridDiagram>
               </DiagramContainer>

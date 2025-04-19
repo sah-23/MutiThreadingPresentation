@@ -11,7 +11,7 @@ const ContentContainer = styled.div`
   padding: 0;
   justify-content: center;
   align-items: center;
-  margin-top: -1rem;
+  margin-top: -7vh;
 `;
 
 const Card = styled(motion.div)`
@@ -24,6 +24,7 @@ const Card = styled(motion.div)`
   max-width: 1300px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
 `;
 
 const Title = styled.h2`

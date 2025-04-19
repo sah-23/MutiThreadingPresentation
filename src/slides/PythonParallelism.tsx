@@ -22,12 +22,13 @@ const Card = styled(motion.div)`
   width: 90%;
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 `;
 
 const SectionTitle = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--accent);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -66,8 +67,8 @@ const ContainerSection = styled.div`
 const SolutionBox = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.2rem;
-  padding: 1rem;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
   border-radius: 8px;
   background: rgba(40, 50, 80, 0.3);
   border-left: 3px solid var(--primary);
@@ -76,23 +77,23 @@ const SolutionBox = styled(motion.div)`
 const CodeBlock = styled.pre`
   background-color: rgba(30, 40, 65, 0.8);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.7rem;
   border-left: 3px solid var(--primary);
-  margin: 0.8rem 0;
+  margin: 0.6rem 0;
   font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #eaeaea;
   overflow-x: auto;
 `;
 
 const CodeLine = styled.div`
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 `;
 
 const ComparisonsContainer = styled.div`
   display: flex;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 0.8rem;
 `;
 
 const ComparisonColumn = styled.div`
@@ -111,8 +112,7 @@ const PythonParallelism: React.FC = () => {
           <ContainerSection>
             <TextContent>
               For CPU-bound tasks requiring true parallelism, Python developers typically use alternatives like the multiprocessing 
-              module (which uses separate processes instead of threads), or alternative Python implementations like Jython or 
-              IronPython that don't have a GIL.
+              module, or alternative Python implementations like Jython or IronPython that don't have a GIL.
             </TextContent>
             
             <SectionTitle>True Parallelism Solutions in Python</SectionTitle>
@@ -126,7 +126,7 @@ const PythonParallelism: React.FC = () => {
                 >
                   <SectionTitle>Multiprocessing Module</SectionTitle>
                   <TextContent>
-                    Uses separate processes instead of threads, completely bypassing the GIL. Each process has its own Python 
+                    Uses separate processes instead of threads, bypassing the GIL. Each process has its own Python 
                     interpreter and memory space.
                   </TextContent>
                   
@@ -136,24 +136,18 @@ const PythonParallelism: React.FC = () => {
                     <CodeLine>def cpu_intensive_task(n):</CodeLine>
                     <CodeLine>    # This will run in parallel</CodeLine>
                     <CodeLine>    result = 0</CodeLine>
-                    <CodeLine>    for i in range(n):</CodeLine>
-                    <CodeLine>        result += i * i</CodeLine>
+                    <CodeLine>    for i in range(n): result += i * i</CodeLine>
                     <CodeLine>    print("Process result: {0}".format(result))</CodeLine>
                     <CodeLine></CodeLine>
                     <CodeLine>if __name__ == "__main__":</CodeLine>
                     <CodeLine>    # Create 4 processes</CodeLine>
                     <CodeLine>    processes = []</CodeLine>
                     <CodeLine>    for i in range(4):</CodeLine>
-                    <CodeLine>        p = Process(</CodeLine>
-                    <CodeLine>            target=cpu_intensive_task,</CodeLine>
-                    <CodeLine>            args=(10000000,)</CodeLine>
-                    <CodeLine>        )</CodeLine>
+                    <CodeLine>        p = Process(target=cpu_intensive_task, args=(10000000,))</CodeLine>
                     <CodeLine>        processes.append(p)</CodeLine>
                     <CodeLine>        p.start()</CodeLine>
-                    <CodeLine></CodeLine>
                     <CodeLine>    # Wait for all processes to finish</CodeLine>
-                    <CodeLine>    for p in processes:</CodeLine>
-                    <CodeLine>        p.join()</CodeLine>
+                    <CodeLine>    for p in processes: p.join()</CodeLine>
                   </CodeBlock>
                 </SolutionBox>
               </ComparisonColumn>
@@ -170,20 +164,20 @@ const PythonParallelism: React.FC = () => {
                   </TextContent>
                   
                   <TextContent>
-                    <HighlightText>Jython:</HighlightText> Implementation of Python that runs on the Java Virtual Machine. 
-                    It uses Java's threading model and doesn't have a GIL.
+                    <HighlightText>Jython:</HighlightText> Implementation for Java Virtual Machine. 
+                    Uses Java's threading model without GIL.
                   </TextContent>
                   
                   <TextContent>
-                    <HighlightText>IronPython:</HighlightText> Implementation of Python for the .NET Framework. 
-                    Also doesn't have a GIL, enabling true parallel execution.
+                    <HighlightText>IronPython:</HighlightText> Implementation for the .NET Framework. 
+                    No GIL, enabling true parallel execution.
                   </TextContent>
                   
-                  <SectionTitle style={{ marginTop: '1rem' }}>Other Parallelism Options</SectionTitle>
+                  <SectionTitle style={{ marginTop: '0.8rem' }}>Other Parallelism Options</SectionTitle>
                   
                   <TextContent>
-                    <HighlightText>concurrent.futures:</HighlightText> A high-level interface for asynchronously executing callables. 
-                    Its ProcessPoolExecutor uses multiprocessing for true parallelism.
+                    <HighlightText>concurrent.futures:</HighlightText> High-level interface for async execution. 
+                    ProcessPoolExecutor uses multiprocessing for parallelism.
                   </TextContent>
                   
                   <TextContent>
@@ -192,8 +186,8 @@ const PythonParallelism: React.FC = () => {
                   </TextContent>
                   
                   <TextContent>
-                    <HighlightText>Numba:</HighlightText> JIT compiler that generates optimized machine code from Python code, 
-                    with support for parallelism.
+                    <HighlightText>Numba:</HighlightText> JIT compiler that generates optimized machine code from Python,
+                    with parallelism support.
                   </TextContent>
                 </SolutionBox>
               </ComparisonColumn>
@@ -201,7 +195,7 @@ const PythonParallelism: React.FC = () => {
             
             <TextContent style={{ marginTop: '1rem' }}>
               The key tradeoff: Multiprocessing introduces overhead from process creation and inter-process 
-              communication. Choose your parallelism solution based on your specific workload and requirements.
+              communication. Choose your solution based on your workload and requirements.
             </TextContent>
           </ContainerSection>
         </Card>

@@ -7,19 +7,19 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  padding: 0 1.5rem 1rem 1.5rem;
-  justify-content: flex-start;
-  padding-top: 2.5rem;
+  height: 90%;
+  padding: 0;
+  justify-content: center;
   align-items: center;
-  margin-top: -1.5rem;
+  margin-top: -0.8rem;
 `;
 
 const CardsContainer = styled.div`
   display: flex;
   width: 95%;
   gap: 1.5rem;
-  margin-bottom: 1rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 `;
 
 const Card = styled(motion.div)`

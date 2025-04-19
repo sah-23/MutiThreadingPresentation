@@ -439,6 +439,8 @@ const ThreadVsCpuCore: React.FC = () => {
               <CardListItem>The smallest unit of processing scheduled by an OS</CardListItem>
               <CardListItem>Exists within a process and shares its resources</CardListItem>
               <CardListItem>Can be executed on any available CPU core</CardListItem>
+              <CardListItem>Multiple threads can run on a single core via time slicing</CardListItem>
+              <CardListItem>Software abstraction, not a physical component</CardListItem>
             </CardList>
           </Card>
         </CardRow>

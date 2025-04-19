@@ -25,19 +25,27 @@ const CodeContainer = styled(motion.div)`
   background: #121212;
   border: 1px solid rgba(74, 144, 226, 0.3);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 1.5rem;
+  padding-top: 2.2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   width: 70%;
   margin: 0 auto;
   position: relative;
+  overflow: visible;
 `;
 
-const CodeHeader = styled.div`
+const WindowHeader = styled.div`
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: #1f1f1f;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
   display: flex;
-  gap: 6px;
+  align-items: center;
+  padding-left: 12px;
 `;
 
 const CodeDot = styled.div<{ color: string }>`
@@ -45,11 +53,13 @@ const CodeDot = styled.div<{ color: string }>`
   height: 12px;
   border-radius: 50%;
   background-color: ${props => props.color};
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-right: 6px;
 `;
 
 const Pre = styled.pre`
   margin: 0;
-  padding-top: 15px;
+  padding-top: 0;
   font-family: 'Fira Code', monospace;
   overflow: hidden;
   background: #121212;
@@ -111,11 +121,11 @@ const SequentialProgramming: React.FC = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <CodeHeader>
+          <WindowHeader>
             <CodeDot color="#ff5f56" />
             <CodeDot color="#ffbd2e" />
             <CodeDot color="#27c93f" />
-          </CodeHeader>
+          </WindowHeader>
           
           <Pre>
             <Code>

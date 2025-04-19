@@ -7,19 +7,19 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  padding: 0 1.5rem 1rem 1.5rem;
-  justify-content: flex-start;
-  padding-top: 2.5rem;
+  height: 90%;
+  padding: 0;
+  justify-content: center;
   align-items: center;
-  margin-top: -1.5rem;
+  margin-top: -0.8rem;
 `;
 
 const CardsContainer = styled.div`
   display: flex;
   width: 95%;
   gap: 1.5rem;
-  margin-bottom: 1rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 `;
 
 const Card = styled(motion.div)`
@@ -118,7 +118,7 @@ const GILMutex = styled(motion.div)`
 
 const Thread = styled(motion.div)`
   position: absolute;
-  width: 60px;
+  width: 70px;
   height: 40px;
   border-radius: 10px;
   display: flex;
@@ -163,6 +163,7 @@ const PythonGIL: React.FC = () => {
                     top: '20px', 
                     left: '50px',
                     opacity: 0.5,
+                    width: '70px'
                   }}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 0.5, x: 0 }}
@@ -177,6 +178,7 @@ const PythonGIL: React.FC = () => {
                     bottom: '20px', 
                     left: '80px',
                     opacity: 0.5,
+                    width: '70px'
                   }}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 0.5, x: 0 }}
@@ -191,6 +193,7 @@ const PythonGIL: React.FC = () => {
                     top: '20px', 
                     right: '50px',
                     border: '2px solid rgba(255, 255, 255, 0.8)',
+                    width: '70px'
                   }}
                   initial={{ opacity: 0, x: 30 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -204,7 +207,7 @@ const PythonGIL: React.FC = () => {
                   style={{ 
                     position: 'absolute',
                     top: '40px',
-                    right: '115px',
+                    right: '125px',
                     width: '40px',
                     height: '2px',
                     backgroundColor: 'rgba(100, 100, 220, 0.9)',
@@ -218,7 +221,7 @@ const PythonGIL: React.FC = () => {
                   style={{ 
                     position: 'absolute',
                     top: '25px',
-                    right: '125px',
+                    right: '135px',
                     color: 'rgba(255, 255, 255, 0.8)',
                     fontSize: '0.75rem',
                     fontWeight: 'bold',

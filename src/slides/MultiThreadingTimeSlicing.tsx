@@ -19,7 +19,7 @@ const CardRow = styled.div`
   justify-content: space-between;
   gap: 20px;
   width: 100%;
-  align-items: flex-start;
+  align-items: stretch;
 `;
 
 const Card = styled(motion.div)<{ width?: string }>`
@@ -27,7 +27,7 @@ const Card = styled(motion.div)<{ width?: string }>`
   border-radius: 10px;
   padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: ${props => props.width || '48%'};
+  width: ${props => props.width || '50%'};
   position: relative;
   border: 1px solid rgba(100, 120, 200, 0.3);
   overflow: hidden;
@@ -169,126 +169,138 @@ const ProcessingLine = styled(motion.div)`
 // Time slicing diagram components
 const TimelineContainer = styled.div`
   width: 100%;
-  height: 200px;
+  height: 220px;
   position: relative;
   margin-top: 1rem;
+  background: rgba(20, 30, 60, 0.5);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 `;
 
 const Timeline = styled.div`
-  width: 100%;
-  height: 3px;
+  width: 90%;
+  height: 6px;
+  background: rgba(40, 50, 80, 0.8);
+  position: relative;
+  margin: 0 auto;
+  border-radius: 3px;
+  margin-top: 50px;
+`;
+
+const ContextSwitch = styled(motion.div)`
+  position: absolute;
+  width: 2px;
+  height: 50px;
   background: rgba(255, 255, 255, 0.5);
-  position: absolute;
-  top: 100px;
+  top: -25px;
+  z-index: 3;
 `;
 
-const TimeProgress = styled(motion.div)`
+const TimeSliceSegment = styled(motion.div)<{ color: string }>`
   position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background: #ffffff;
-  top: 94px;
-  z-index: 5;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-`;
-
-const ContextSwitchIndicator = styled(motion.div)<{ left: number }>`
-  position: absolute;
-  height: 40px;
-  width: 3px;
-  background: rgba(255, 255, 255, 0.7);
-  top: 80px;
-  left: ${props => props.left}%;
-  z-index: 4;
-`;
-
-const TimeSlice = styled(motion.div)<{ color: string; left: number; width: number }>`
-  position: absolute;
-  height: 30px;
+  height: 24px;
   background: ${props => props.color};
-  top: 86px;
-  left: ${props => props.left}%;
-  width: ${props => props.width}%;
+  top: -9px;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   z-index: 2;
 `;
 
-const TimeSliceLabel = styled.div`
+const SegmentLabel = styled.div`
   font-size: 0.8rem;
   color: white;
   font-weight: bold;
   white-space: nowrap;
 `;
 
-const ThreadState = styled(motion.div)<{ color: string; top: number }>`
-  position: absolute;
-  left: 5px;
-  top: ${props => props.top}px;
-  width: 100px;
-  height: 30px;
-  background: ${props => props.color};
-  opacity: 0.3;
-  border-radius: 4px;
+const ProcessContainer = styled.div`
   display: flex;
   align-items: center;
-  padding-left: 8px;
-  font-size: 0.8rem;
-  color: white;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 45px;
 `;
 
-const RunningState = styled(motion.div)<{ color: string }>`
-  position: absolute;
-  width: 100px;
-  height: 30px;
+const ProcessIndicator = styled(motion.div)<{ color: string, isActive: boolean }>`
+  width: 50px;
+  height: 35px;
   background: ${props => props.color};
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  padding-left: 8px;
-  font-size: 0.8rem;
-  color: white;
-  font-weight: bold;
-  box-shadow: 0 0 8px ${props => props.color};
-  z-index: 3;
-`;
-
-const TimeMarker = styled.div<{ position: number }>`
-  position: absolute;
-  top: 110px;
-  left: ${props => props.position}%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.7);
-`;
-
-const StateLabel = styled.div`
-  position: absolute;
-  left: 110px;
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: bold;
-`;
-
-const ActiveThread = styled(motion.div)`
-  position: absolute;
-  width: 40px;
-  height: 40px;
+  opacity: ${props => props.isActive ? 1 : 0.5};
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
   font-size: 0.9rem;
   font-weight: bold;
   color: white;
-  top: 0;
-  z-index: 2;
+  box-shadow: ${props => props.isActive ? `0 0 15px ${props.color}` : 'none'};
 `;
 
+const ActiveIndicator = styled(motion.div)`
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
+  border-radius: 50%;
+  top: -4px;
+  z-index: 4;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+`;
+
+const TimeMarker = styled.div<{ position: string }>`
+  position: absolute;
+  bottom: -25px;
+  left: ${props => props.position};
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%);
+`;
+
+// Add a new custom hook to manage the active thread state
+const useActiveThread = (initialThread: number = 1) => {
+  const [activeThread, setActiveThread] = React.useState(initialThread);
+  
+  React.useEffect(() => {
+    // Set up a sequence of timeouts to change active thread based on animation timeline
+    const timeouts = [
+      setTimeout(() => setActiveThread(1), 0),    // Thread 1 at start
+      setTimeout(() => setActiveThread(2), 1500), // Thread 2 after 1.5s
+      setTimeout(() => setActiveThread(3), 3000), // Thread 3 after 3s
+      setTimeout(() => setActiveThread(4), 4500), // Thread 4 after 4.5s
+      setTimeout(() => setActiveThread(1), 6000), // Back to Thread 1 after 6s
+    ];
+    
+    // Set up a loop to repeat the sequence
+    const interval = setInterval(() => {
+      setActiveThread(1);
+      setTimeout(() => setActiveThread(2), 1500);
+      setTimeout(() => setActiveThread(3), 3000);
+      setTimeout(() => setActiveThread(4), 4500);
+      setTimeout(() => setActiveThread(1), 6000);
+    }, 8000);
+    
+    // Clean up timeouts and interval on unmount
+    return () => {
+      timeouts.forEach(timeout => clearTimeout(timeout));
+      clearInterval(interval);
+    };
+  }, []);
+  
+  return activeThread;
+};
+
 const MultiThreadingTimeSlicing: React.FC = () => {
+  // Use the custom hook to track which thread is active
+  const activeThread = useActiveThread();
+  
   return (
     <Slide title="Multi-Threading and Time Slicing" subtitle="Concepts and Relationships">
       <ContentContainer>
@@ -534,208 +546,251 @@ const MultiThreadingTimeSlicing: React.FC = () => {
             </CardList>
             
             <TimelineContainer>
-              <Timeline />
-              
-              <TimeMarker position={0}>0ms</TimeMarker>
-              <TimeMarker position={20}>100ms</TimeMarker>
-              <TimeMarker position={40}>200ms</TimeMarker>
-              <TimeMarker position={60}>300ms</TimeMarker>
-              <TimeMarker position={80}>400ms</TimeMarker>
-              <TimeMarker position={100}>500ms</TimeMarker>
-              
-              {/* Thread state indicators */}
-              <ThreadState color="rgba(235, 87, 87, 0.5)" top={20}>
-                Thread 1
-              </ThreadState>
-              <StateLabel style={{ top: '20px' }}>Ready/Waiting</StateLabel>
-              
-              <ThreadState color="rgba(106, 130, 251, 0.5)" top={60}>
-                Thread 2
-              </ThreadState>
-              <StateLabel style={{ top: '60px' }}>Ready/Waiting</StateLabel>
-              
-              <ThreadState color="rgba(69, 178, 107, 0.5)" top={140}>
-                Thread 3
-              </ThreadState>
-              <StateLabel style={{ top: '140px' }}>Ready/Waiting</StateLabel>
-              
-              {/* Context switch indicators */}
-              <ContextSwitchIndicator 
-                left={20}
-                initial={{ height: 0 }}
-                animate={{ height: 40 }}
-                transition={{ duration: 0.3, delay: 3.0 }}
-              />
-              
-              <ContextSwitchIndicator 
-                left={40}
-                initial={{ height: 0 }}
-                animate={{ height: 40 }}
-                transition={{ duration: 0.3, delay: 7.0 }}
-              />
-              
-              <ContextSwitchIndicator 
-                left={60}
-                initial={{ height: 0 }}
-                animate={{ height: 40 }}
-                transition={{ duration: 0.3, delay: 11.0 }}
-              />
-              
-              <ContextSwitchIndicator 
-                left={80}
-                initial={{ height: 0 }}
-                animate={{ height: 40 }}
-                transition={{ duration: 0.3, delay: 15.0 }}
-              />
-              
-              {/* Time slices */}
-              <TimeSlice 
-                color="rgba(235, 87, 87, 0.8)" 
-                left={0} 
-                width={20}
-                initial={{ scaleY: 0 }}
-                animate={{ 
-                  scaleY: 1,
-                  filter: ['brightness(100%)', 'brightness(120%)', 'brightness(100%)']
-                }}
-                transition={{ 
-                  scaleY: { duration: 0.5, delay: 1.0 },
-                  filter: { duration: 2, repeat: Infinity, repeatType: 'mirror' }
-                }}
-              >
-                <TimeSliceLabel>Thread 1 (20ms)</TimeSliceLabel>
-              </TimeSlice>
-              
-              <TimeSlice 
-                color="rgba(106, 130, 251, 0.8)" 
-                left={20} 
-                width={20}
-                initial={{ scaleY: 0 }}
-                animate={{ 
-                  scaleY: 1,
-                  filter: ['brightness(100%)', 'brightness(120%)', 'brightness(100%)']
-                }}
-                transition={{ 
-                  scaleY: { duration: 0.5, delay: 3.5 },
-                  filter: { duration: 2.2, repeat: Infinity, repeatType: 'mirror' }
-                }}
-              >
-                <TimeSliceLabel>Thread 2 (20ms)</TimeSliceLabel>
-              </TimeSlice>
-              
-              <TimeSlice 
-                color="rgba(69, 178, 107, 0.8)" 
-                left={40} 
-                width={20}
-                initial={{ scaleY: 0 }}
-                animate={{ 
-                  scaleY: 1,
-                  filter: ['brightness(100%)', 'brightness(120%)', 'brightness(100%)']
-                }}
-                transition={{ 
-                  scaleY: { duration: 0.5, delay: 7.5 },
-                  filter: { duration: 1.8, repeat: Infinity, repeatType: 'mirror' }
-                }}
-              >
-                <TimeSliceLabel>Thread 3 (20ms)</TimeSliceLabel>
-              </TimeSlice>
-              
-              <TimeSlice 
-                color="rgba(235, 87, 87, 0.8)" 
-                left={60} 
-                width={20}
-                initial={{ scaleY: 0 }}
-                animate={{ 
-                  scaleY: 1,
-                  filter: ['brightness(100%)', 'brightness(120%)', 'brightness(100%)']
-                }}
-                transition={{ 
-                  scaleY: { duration: 0.5, delay: 11.5 },
-                  filter: { duration: 1.9, repeat: Infinity, repeatType: 'mirror' }
-                }}
-              >
-                <TimeSliceLabel>Thread 1 (20ms)</TimeSliceLabel>
-              </TimeSlice>
-              
-              <TimeSlice 
-                color="rgba(106, 130, 251, 0.8)" 
-                left={80} 
-                width={20}
-                initial={{ scaleY: 0 }}
-                animate={{ 
-                  scaleY: 1,
-                  filter: ['brightness(100%)', 'brightness(120%)', 'brightness(100%)']
-                }}
-                transition={{ 
-                  scaleY: { duration: 0.5, delay: 15.5 },
-                  filter: { duration: 2.1, repeat: Infinity, repeatType: 'mirror' }
-                }}
-              >
-                <TimeSliceLabel>Thread 2 (20ms)</TimeSliceLabel>
-              </TimeSlice>
-              
-              {/* Running thread indicator */}
-              <RunningState
-                color="rgba(235, 87, 87, 1)"
-                animate={{
-                  top: ['20px', '20px', '100px', '100px', '20px', '20px', '100px', '100px', '20px'],
-                  left: ['5px', '5px', '5px', '5px', '5px', '5px', '5px', '5px', '5px'],
-                  opacity: [0, 1, 0, 0, 0, 1, 0, 0, 0],
-                }}
-                transition={{
-                  duration: 19,
-                  times: [0, 0.15, 0.16, 0.57, 0.58, 0.73, 0.74, 1, 1],
-                  repeat: Infinity,
-                }}
-              >
-                Thread 1 (Running)
-              </RunningState>
-              
-              <RunningState
-                color="rgba(106, 130, 251, 1)"
-                animate={{
-                  top: ['60px', '60px', '100px', '100px', '60px', '60px', '100px', '100px', '60px'],
-                  left: ['5px', '5px', '5px', '5px', '5px', '5px', '5px', '5px', '5px'],
-                  opacity: [0, 0, 0, 1, 0, 0, 0, 1, 0],
-                }}
-                transition={{
-                  duration: 19,
-                  times: [0, 0.15, 0.16, 0.36, 0.37, 0.78, 0.79, 0.99, 1],
-                  repeat: Infinity,
-                }}
-              >
-                Thread 2 (Running)
-              </RunningState>
-              
-              <RunningState
-                color="rgba(69, 178, 107, 1)"
-                animate={{
-                  top: ['140px', '140px', '100px', '100px', '140px'],
-                  left: ['5px', '5px', '5px', '5px', '5px'],
-                  opacity: [0, 0, 0, 1, 0],
-                }}
-                transition={{
-                  duration: 19,
-                  times: [0, 0.36, 0.37, 0.57, 0.58],
-                  repeat: Infinity,
-                }}
-              >
-                Thread 3 (Running)
-              </RunningState>
-              
-              {/* Time progress indicator */}
-              <TimeProgress 
-                animate={{ 
-                  left: ['0%', '100%'],
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{ 
-                  left: { duration: 19, repeat: Infinity },
-                  scale: { duration: 2, repeat: Infinity, repeatType: 'mirror' },
-                  opacity: { duration: 2, repeat: Infinity, repeatType: 'mirror' }
-                }}
-              />
+              <ProcessContainer>
+                <ProcessIndicator 
+                  color="rgba(235, 87, 87, 0.8)" 
+                  isActive={activeThread === 1}
+                  animate={{ 
+                    scale: activeThread === 1 ? [1, 1.05, 1] : 1,
+                    boxShadow: activeThread === 1 ? [
+                      '0 0 8px rgba(235, 87, 87, 0.6)', 
+                      '0 0 15px rgba(235, 87, 87, 0.8)', 
+                      '0 0 8px rgba(235, 87, 87, 0.6)'
+                    ] : 'none',
+                    opacity: activeThread === 1 ? 1 : 0.5
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: activeThread === 1 ? Infinity : 0,
+                    repeatType: 'loop'
+                  }}
+                >
+                  T1
+                </ProcessIndicator>
+                <ProcessIndicator 
+                  color="rgba(106, 130, 251, 0.8)" 
+                  isActive={activeThread === 2}
+                  animate={{ 
+                    scale: activeThread === 2 ? [1, 1.05, 1] : 1,
+                    boxShadow: activeThread === 2 ? [
+                      '0 0 8px rgba(106, 130, 251, 0.6)', 
+                      '0 0 15px rgba(106, 130, 251, 0.8)', 
+                      '0 0 8px rgba(106, 130, 251, 0.6)'
+                    ] : 'none',
+                    opacity: activeThread === 2 ? 1 : 0.5
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: activeThread === 2 ? Infinity : 0,
+                    repeatType: 'loop'
+                  }}
+                >
+                  T2
+                </ProcessIndicator>
+                <ProcessIndicator 
+                  color="rgba(69, 178, 107, 0.8)" 
+                  isActive={activeThread === 3}
+                  animate={{ 
+                    scale: activeThread === 3 ? [1, 1.05, 1] : 1,
+                    boxShadow: activeThread === 3 ? [
+                      '0 0 8px rgba(69, 178, 107, 0.6)', 
+                      '0 0 15px rgba(69, 178, 107, 0.8)', 
+                      '0 0 8px rgba(69, 178, 107, 0.6)'
+                    ] : 'none',
+                    opacity: activeThread === 3 ? 1 : 0.5
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: activeThread === 3 ? Infinity : 0,
+                    repeatType: 'loop'
+                  }}
+                >
+                  T3
+                </ProcessIndicator>
+                <ProcessIndicator 
+                  color="rgba(254, 197, 68, 0.8)" 
+                  isActive={activeThread === 4}
+                  animate={{ 
+                    scale: activeThread === 4 ? [1, 1.05, 1] : 1,
+                    boxShadow: activeThread === 4 ? [
+                      '0 0 8px rgba(254, 197, 68, 0.6)', 
+                      '0 0 15px rgba(254, 197, 68, 0.8)', 
+                      '0 0 8px rgba(254, 197, 68, 0.6)'
+                    ] : 'none',
+                    opacity: activeThread === 4 ? 1 : 0.5
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: activeThread === 4 ? Infinity : 0,
+                    repeatType: 'loop'
+                  }}
+                >
+                  T4
+                </ProcessIndicator>
+              </ProcessContainer>
+
+              <Timeline>
+                {/* Context switch indicators */}
+                <ContextSwitch 
+                  style={{ left: '20%' }}
+                  initial={{ height: 0 }}
+                  animate={{ height: 50 }}
+                  transition={{ duration: 0.3, delay: 1.5 }}
+                />
+                <ContextSwitch 
+                  style={{ left: '40%' }}
+                  initial={{ height: 0 }}
+                  animate={{ height: 50 }}
+                  transition={{ duration: 0.3, delay: 3 }}
+                />
+                <ContextSwitch 
+                  style={{ left: '60%' }}
+                  initial={{ height: 0 }}
+                  animate={{ height: 50 }}
+                  transition={{ duration: 0.3, delay: 4.5 }}
+                />
+                <ContextSwitch 
+                  style={{ left: '80%' }}
+                  initial={{ height: 0 }}
+                  animate={{ height: 50 }}
+                  transition={{ duration: 0.3, delay: 6 }}
+                />
+
+                {/* Time slices */}
+                <TimeSliceSegment
+                  color="rgba(235, 87, 87, 0.8)"
+                  style={{ left: '0%', width: '20%' }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ 
+                    scaleY: 1,
+                    boxShadow: [
+                      '0 0 8px rgba(235, 87, 87, 0.5)', 
+                      '0 0 15px rgba(235, 87, 87, 0.7)', 
+                      '0 0 8px rgba(235, 87, 87, 0.5)'
+                    ]
+                  }}
+                  transition={{ 
+                    scaleY: { duration: 0.3 },
+                    boxShadow: { duration: 1.5, repeat: Infinity }
+                  }}
+                >
+                  <SegmentLabel>Thread 1</SegmentLabel>
+                </TimeSliceSegment>
+
+                <TimeSliceSegment
+                  color="rgba(106, 130, 251, 0.8)"
+                  style={{ left: '20%', width: '20%' }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ 
+                    scaleY: 1,
+                    boxShadow: [
+                      '0 0 8px rgba(106, 130, 251, 0.5)', 
+                      '0 0 15px rgba(106, 130, 251, 0.7)', 
+                      '0 0 8px rgba(106, 130, 251, 0.5)'
+                    ]
+                  }}
+                  transition={{ 
+                    scaleY: { duration: 0.3, delay: 1.5 },
+                    boxShadow: { duration: 1.5, repeat: Infinity, delay: 1.5 }
+                  }}
+                >
+                  <SegmentLabel>Thread 2</SegmentLabel>
+                </TimeSliceSegment>
+
+                <TimeSliceSegment
+                  color="rgba(69, 178, 107, 0.8)"
+                  style={{ left: '40%', width: '20%' }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ 
+                    scaleY: 1,
+                    boxShadow: [
+                      '0 0 8px rgba(69, 178, 107, 0.5)', 
+                      '0 0 15px rgba(69, 178, 107, 0.7)', 
+                      '0 0 8px rgba(69, 178, 107, 0.5)'
+                    ]
+                  }}
+                  transition={{ 
+                    scaleY: { duration: 0.3, delay: 3 },
+                    boxShadow: { duration: 1.5, repeat: Infinity, delay: 3 }
+                  }}
+                >
+                  <SegmentLabel>Thread 3</SegmentLabel>
+                </TimeSliceSegment>
+
+                <TimeSliceSegment
+                  color="rgba(254, 197, 68, 0.8)"
+                  style={{ left: '60%', width: '20%' }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ 
+                    scaleY: 1,
+                    boxShadow: [
+                      '0 0 8px rgba(254, 197, 68, 0.5)', 
+                      '0 0 15px rgba(254, 197, 68, 0.7)', 
+                      '0 0 8px rgba(254, 197, 68, 0.5)'
+                    ]
+                  }}
+                  transition={{ 
+                    scaleY: { duration: 0.3, delay: 4.5 },
+                    boxShadow: { duration: 1.5, repeat: Infinity, delay: 4.5 }
+                  }}
+                >
+                  <SegmentLabel>Thread 4</SegmentLabel>
+                </TimeSliceSegment>
+
+                <TimeSliceSegment
+                  color="rgba(235, 87, 87, 0.8)"
+                  style={{ left: '80%', width: '20%' }}
+                  initial={{ scaleY: 0 }}
+                  animate={{ 
+                    scaleY: 1,
+                    boxShadow: [
+                      '0 0 8px rgba(235, 87, 87, 0.5)', 
+                      '0 0 15px rgba(235, 87, 87, 0.7)', 
+                      '0 0 8px rgba(235, 87, 87, 0.5)'
+                    ]
+                  }}
+                  transition={{ 
+                    scaleY: { duration: 0.3, delay: 6 },
+                    boxShadow: { duration: 1.5, repeat: Infinity, delay: 6 }
+                  }}
+                >
+                  <SegmentLabel>Thread 1</SegmentLabel>
+                </TimeSliceSegment>
+
+                {/* Progress indicator */}
+                <ActiveIndicator
+                  animate={{ 
+                    left: ['0%', '100%'],
+                    scale: [1, 1.2, 1],
+                    boxShadow: [
+                      '0 0 10px rgba(255, 255, 255, 0.7)',
+                      '0 0 15px rgba(255, 255, 255, 0.9)',
+                      '0 0 10px rgba(255, 255, 255, 0.7)'
+                    ]
+                  }}
+                  transition={{ 
+                    left: { duration: 8, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 1.5, repeat: Infinity, repeatType: 'mirror' },
+                    boxShadow: { duration: 1.5, repeat: Infinity, repeatType: 'mirror' }
+                  }}
+                />
+              </Timeline>
+
+              {/* Move time markers below the timeline */}
+              <div style={{ 
+                width: '90%', 
+                position: 'relative', 
+                height: '25px', 
+                margin: '0 auto', 
+                marginTop: '5px'
+              }}>
+                <TimeMarker position="0%">0ms</TimeMarker>
+                <TimeMarker position="20%">25ms</TimeMarker>
+                <TimeMarker position="40%">50ms</TimeMarker>
+                <TimeMarker position="60%">75ms</TimeMarker>
+                <TimeMarker position="80%">100ms</TimeMarker>
+                <TimeMarker position="100%">125ms</TimeMarker>
+              </div>
             </TimelineContainer>
           </Card>
         </CardRow>

@@ -127,8 +127,7 @@ const PanelContent = styled.div`
   flex: 1;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  scrollbar-width: thin;
+  overflow: hidden;
   padding: 20px;
 `;
 

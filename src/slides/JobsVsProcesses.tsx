@@ -10,12 +10,14 @@ const ContentContainer = styled.div`
   height: 100%;
   padding: 1rem;
   gap: 1.5rem;
+  overflow: hidden;
 `;
 
 const Row = styled.div`
   display: flex;
   width: 100%;
   gap: 1.5rem;
+  overflow: hidden;
 `;
 
 const Card = styled(motion.div)`
@@ -27,6 +29,7 @@ const Card = styled(motion.div)`
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 const CardTitle = styled.h3`
@@ -41,7 +44,7 @@ const CardTitle = styled.h3`
 
 const CardContent = styled.div`
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 const ComparisonTable = styled.div`
@@ -49,6 +52,7 @@ const ComparisonTable = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
   margin-top: 1rem;
+  overflow: hidden;
 `;
 
 const ComparisonColumn = styled(motion.div)`
@@ -59,6 +63,7 @@ const ComparisonColumn = styled(motion.div)`
   padding: 1rem;
   border: 1px solid rgba(100, 120, 200, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 `;
 
 const ColumnTitle = styled.h4`
@@ -74,6 +79,7 @@ const ColumnContent = styled.div`
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
+  overflow: hidden;
 `;
 
 const Feature = styled.div`
@@ -93,8 +99,9 @@ const DiagramContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 340px;
+  height: 200px;
   position: relative;
+  overflow: hidden;
 `;
 
 const DiagramBox = styled(motion.div)<{ color?: string, background?: string }>`

@@ -120,28 +120,6 @@ const Thread = styled(motion.div)<{ color: string }>`
   font-size: 0.8rem;
 `;
 
-const Arrow = styled(motion.div)`
-  position: absolute;
-  top: 110px;
-  left: 70px;
-  width: 400px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.5);
-  transform-origin: left center;
-  
-  &:after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: -4px;
-    width: 0;
-    height: 0;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 10px solid rgba(255, 255, 255, 0.5);
-  }
-`;
-
 const TimeSlicingRelationship: React.FC = () => {
   return (
     <Slide title="Time Slicing" subtitle="Relationship with Multi-Threading">
@@ -211,17 +189,11 @@ const TimeSlicingRelationship: React.FC = () => {
                 >T1</Thread>
                 <Thread 
                   color="rgba(106, 130, 251, 0.8)"
-                  initial={{ opacity: 0.3 }}
-                  animate={{ opacity: 0.3 }}
+                  initial={{ opacity: 0.3, scale: 0.9 }}
+                  animate={{ opacity: 0.3, scale: 0.9 }}
+                  style={{ width: '35px', height: '35px' }}
                 >T2</Thread>
-
-
               </Core>
-              <Arrow
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 1.8 }}
-              />
             </CoreContainer>
             
             <CoreContainer

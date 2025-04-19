@@ -15,7 +15,7 @@ const ContentContainer = styled.div`
 const Card = styled(motion.div)<{ borderColor?: string }>`
   background: rgba(25, 35, 60, 0.8);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.2rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid ${props => props.borderColor || 'rgba(100, 120, 200, 0.3)'};
   display: flex;
@@ -25,16 +25,17 @@ const Card = styled(motion.div)<{ borderColor?: string }>`
 const CardTitle = styled.h3<{ color?: string }>`
   font-size: 1.15rem;
   color: ${props => props.color || 'var(--primary)'};
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
   text-align: center;
   border-bottom: 1px solid rgba(100, 120, 200, 0.3);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.6rem;
 `;
 
 const CardContent = styled.div`
   font-size: 0.85rem;
   line-height: 1.4;
+  margin-bottom: 0.4rem;
 `;
 
 const Row = styled.div`
@@ -68,14 +69,15 @@ const StepContainer = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 0.7rem;
+  margin-bottom: 1.2rem;
 `;
 
 const Step = styled(motion.div)`
   background: rgba(74, 144, 226, 0.1);
   border: 1px solid rgba(74, 144, 226, 0.3);
   border-radius: 8px;
-  padding: 0.7rem;
+  padding: 0.8rem 0.7rem 1.1rem 0.7rem;
   width: calc(20% - 1rem);
   text-align: center;
   position: relative;
@@ -92,14 +94,14 @@ const Step = styled(motion.div)`
 `;
 
 const StepIcon = styled.div`
-  font-size: 1.5rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
 `;
 
 const StepTitle = styled.div`
   font-weight: 600;
   font-size: 0.8rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
   color: rgba(74, 144, 226, 0.9);
 `;
 
@@ -112,9 +114,9 @@ const TimelineContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 1.2rem 0 0.8rem 0;
+  margin: 1.3rem 0 1rem 0;
   position: relative;
-  padding-top: 2rem;
+  padding-top: 2.2rem;
 `;
 
 const TimelineAxis = styled.div`
@@ -122,7 +124,7 @@ const TimelineAxis = styled.div`
   height: 2px;
   background: rgba(255, 255, 255, 0.3);
   position: relative;
-  margin: 0.5rem 0;
+  margin: 0.6rem 0;
   
   &:after {
     content: 'Time →';
@@ -136,13 +138,13 @@ const TimelineAxis = styled.div`
 
 const ProcessTimeline = styled.div`
   position: relative;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
 `;
 
 const ProcessSegment = styled(motion.div)<{ bgColor: string, isRunning: boolean }>`
-  height: ${props => props.isRunning ? '20px' : '10px'};
+  height: ${props => props.isRunning ? '22px' : '11px'};
   margin-top: ${props => props.isRunning ? '-5px' : '0px'};
   background: ${props => props.bgColor};
   border-radius: 4px;
@@ -179,7 +181,7 @@ const ContextSwitchingConcurrency: React.FC = () => {
             >
               <CardTitle>Job to Process Transformation</CardTitle>
               <CardContent>
-                <div>When jobs transform into processes, they follow a sequential pattern:</div>
+                <div style={{ marginBottom: "0.5rem" }}>When jobs transform into processes, they follow a sequential pattern:</div>
                 
                 <StepContainer>
                   <Step
@@ -237,7 +239,7 @@ const ContextSwitchingConcurrency: React.FC = () => {
           </Column>
         </Row>
         
-        <Row style={{ marginTop: '2rem' }}>
+        <Row style={{ marginTop: '3rem' }}>
           <Column>
             <Card 
               initial={{ opacity: 0, y: 20 }}
@@ -358,21 +360,21 @@ const ContextSwitchingConcurrency: React.FC = () => {
                   </motion.div>
                 </TimelineContainer>
                 
-                <div style={{ marginTop: '0.2rem' }}>
+                <div style={{ marginTop: '0.3rem', marginBottom: '0.3rem' }}>
                   <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    <div style={{ flex: '1', minWidth: '200px' }}>
+                    <div style={{ flex: '1', minWidth: '200px', marginBottom: '0.3rem' }}>
                       <strong style={{ color: 'rgba(240, 147, 43, 0.9)' }}>State Saving:</strong> OS saves process state in PCB (registers, PC, memory map, I/O status)
                     </div>
                     
-                    <div style={{ flex: '1', minWidth: '200px' }}>
+                    <div style={{ flex: '1', minWidth: '200px', marginBottom: '0.3rem' }}>
                       <strong style={{ color: 'rgba(180, 180, 180, 0.9)' }}>Scheduling Decision:</strong> OS selects next process based on priority/algorithm
                     </div>
                     
-                    <div style={{ flex: '1', minWidth: '200px' }}>
+                    <div style={{ flex: '1', minWidth: '200px', marginBottom: '0.3rem' }}>
                       <strong style={{ color: 'rgba(74, 144, 226, 0.9)' }}>State Restoration:</strong> OS loads saved state from PCB to CPU
                     </div>
                     
-                    <div style={{ flex: '1', minWidth: '200px' }}>
+                    <div style={{ flex: '1', minWidth: '200px', marginBottom: '0.3rem' }}>
                       <strong style={{ color: 'rgba(106, 217, 126, 0.9)' }}>Execution Resumption:</strong> Process continues from where it left off
                     </div>
                   </div>

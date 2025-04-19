@@ -10,20 +10,24 @@ const ContentContainer = styled.div`
   height: 100%;
   gap: 1rem;
   padding: 0 1.5rem;
-  justify-content: center;
+  padding-top: 0;
+  justify-content: flex-start;
   align-items: center;
+  margin-top: -1.5rem;
 `;
 
 const Card = styled(motion.div)<{ borderColor?: string }>`
   background: rgba(25, 35, 60, 0.8);
   border-radius: 12px;
-  padding: 2rem 1.5rem;
+  padding: 1.8rem 1.5rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid ${props => props.borderColor || 'rgba(100, 120, 200, 0.3)'};
   display: flex;
   flex-direction: column;
   width: 90%;
   max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 2rem;
 `;
 
 const CardTitle = styled.h3<{ color?: string }>`
@@ -46,7 +50,7 @@ const ContextSwitchDiagram = styled(motion.div)`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  margin: 2.5rem 0;
+  margin: 2rem 0;
 `;
 
 const Process = styled.div<{ borderColor: string }>`
@@ -183,10 +187,10 @@ const ContextSwitching2: React.FC = () => {
               </Process>
             </ContextSwitchDiagram>
             
-            <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.9)' }}>
+            <div style={{ marginTop: '1.2rem', textAlign: 'center', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.9)' }}>
               <p>The context switching mechanism preserves the complete state of processes when switching CPU execution.</p>
               <p>This allows the CPU to efficiently move between processes while maintaining their execution state.</p>
-              <p style={{ marginTop: '0.8rem', fontStyle: 'italic', color: 'rgba(255, 255, 255, 0.85)' }}>
+              <p style={{ marginTop: '0.6rem', fontStyle: 'italic', color: 'rgba(255, 255, 255, 0.85)' }}>
                 This mechanism allows multiple processes to share a single CPU while maintaining the illusion that each has dedicated resources.
               </p>
             </div>

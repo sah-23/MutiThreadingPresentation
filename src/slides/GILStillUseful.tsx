@@ -8,7 +8,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 2rem 4rem;
+  padding: 1.5rem 4rem;
   justify-content: flex-start;
   align-items: center;
 `;
@@ -16,7 +16,7 @@ const ContentContainer = styled.div`
 const Card = styled(motion.div)`
   background: rgba(25, 35, 60, 0.8);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1.2rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(100, 120, 200, 0.3);
   width: 90%;
@@ -25,9 +25,9 @@ const Card = styled(motion.div)`
 `;
 
 const SectionTitle = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--accent);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -45,9 +45,9 @@ const SectionTitle = styled.h3`
 
 const TextContent = styled.p`
   color: white;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin-bottom: 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
   
   &:last-child {
     margin-bottom: 0;
@@ -66,8 +66,8 @@ const ContainerSection = styled.div`
 const UsagePoint = styled(motion.div)`
   display: flex;
   align-items: flex-start;
-  margin-bottom: 1.2rem;
-  padding: 1rem;
+  margin-bottom: 0.8rem;
+  padding: 0.8rem;
   border-radius: 8px;
   background: rgba(40, 50, 80, 0.3);
   border-left: 3px solid var(--primary);
@@ -76,8 +76,8 @@ const UsagePoint = styled(motion.div)`
 const PointIcon = styled.div`
   color: var(--primary);
   font-weight: bold;
-  margin-right: 1rem;
-  font-size: 1.2rem;
+  margin-right: 0.8rem;
+  font-size: 1.1rem;
 `;
 
 const PointContent = styled.div`
@@ -87,16 +87,16 @@ const PointContent = styled.div`
 const CodeExample = styled.div`
   background-color: rgba(30, 40, 65, 0.8);
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.7rem;
   border-left: 3px solid var(--primary);
-  margin: 0.8rem 0;
+  margin: 0.6rem 0;
   font-family: 'Fira Code', monospace;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #eaeaea;
 `;
 
 const CodeLine = styled.div`
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 `;
 
 const GILStillUseful: React.FC = () => {
@@ -133,12 +133,7 @@ const GILStillUseful: React.FC = () => {
                   <CodeLine>    # GIL is released during network I/O</CodeLine>
                   <CodeLine>    response = requests.get(url)</CodeLine>
                   <CodeLine>    return response.text</CodeLine>
-                  <CodeLine></CodeLine>
                   <CodeLine># Multiple threads can make requests concurrently</CodeLine>
-                  <CodeLine>threads = [</CodeLine>
-                  <CodeLine>    threading.Thread(target=fetch_url, args=(url,))</CodeLine>
-                  <CodeLine>    for url in urls</CodeLine>
-                  <CodeLine>]</CodeLine>
                 </CodeExample>
               </PointContent>
             </UsagePoint>
@@ -158,12 +153,8 @@ const GILStillUseful: React.FC = () => {
                 <CodeExample>
                   <CodeLine># NumPy operations can release the GIL</CodeLine>
                   <CodeLine>import numpy as np</CodeLine>
-                  <CodeLine>import threading</CodeLine>
-                  <CodeLine></CodeLine>
-                  <CodeLine>def process_array(array):</CodeLine>
-                  <CodeLine>    # NumPy releases GIL during computation</CodeLine>
-                  <CodeLine>    result = np.fft.fft(array)</CodeLine>
-                  <CodeLine>    return result</CodeLine>
+                  <CodeLine># NumPy releases GIL during computation</CodeLine>
+                  <CodeLine>result = np.fft.fft(array)  # Parallel execution</CodeLine>
                 </CodeExample>
               </PointContent>
             </UsagePoint>
@@ -183,22 +174,14 @@ const GILStillUseful: React.FC = () => {
                 <CodeExample>
                   <CodeLine># Example: GUI with background processing</CodeLine>
                   <CodeLine>def long_running_task():</CodeLine>
-                  <CodeLine>    # Process data in background</CodeLine>
-                  <CodeLine>    while not done:</CodeLine>
-                  <CodeLine>        process_next_chunk()</CodeLine>
-                  <CodeLine>        time.sleep(0.001)  # Give other threads a chance</CodeLine>
-                  <CodeLine></CodeLine>
-                  <CodeLine># Start background thread</CodeLine>
-                  <CodeLine>bg_thread = threading.Thread(target=long_running_task)</CodeLine>
-                  <CodeLine>bg_thread.daemon = True</CodeLine>
-                  <CodeLine>bg_thread.start()</CodeLine>
-                  <CodeLine></CodeLine>
-                  <CodeLine># Main thread remains responsive to user input</CodeLine>
+                  <CodeLine>    while not done: process_next_chunk()</CodeLine>
+                  <CodeLine>    time.sleep(0.001)  # Give other threads a chance</CodeLine>
+                  <CodeLine># Start background thread, main remains responsive</CodeLine>
                 </CodeExample>
               </PointContent>
             </UsagePoint>
             
-            <TextContent style={{ marginTop: '1rem' }}>
+            <TextContent style={{ marginTop: '0.8rem' }}>
               The GIL's design, while limiting for CPU-bound tasks, still supports these common threading 
               use cases effectively, making Python threading a valuable tool for many applications.
             </TextContent>

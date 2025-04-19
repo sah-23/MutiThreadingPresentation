@@ -14,14 +14,15 @@ const ContentContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  overflow: hidden;
 `;
 
 const Row = styled.div`
   display: flex;
-  width: 90%;
-  max-width: 1200px;
+  width: 95%;
+  max-width: 1300px;
   gap: 1.5rem;
-  margin-top: 2rem;
+  margin-top: 1.2rem;
 `;
 
 const Column = styled.div`
@@ -31,29 +32,30 @@ const Column = styled.div`
   gap: 1rem;
 `;
 
-const Card = styled(motion.div)<{ borderColor?: string }>`
+const Card = styled(motion.div)<{ borderColor?: string, minHeight?: string }>`
   background: rgba(25, 35, 60, 0.8);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.2rem 1.4rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid ${props => props.borderColor || 'rgba(100, 120, 200, 0.3)'};
   display: flex;
   flex-direction: column;
   height: fit-content;
+  min-height: ${props => props.minHeight || 'auto'};
 `;
 
 const CardTitle = styled.h3<{ color?: string }>`
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: ${props => props.color || 'var(--primary)'};
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
   text-align: center;
   border-bottom: 1px solid rgba(100, 120, 200, 0.3);
-  padding-bottom: 0.4rem;
+  padding-bottom: 0.5rem;
 `;
 
 const CardContent = styled.div`
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 `;
 
 const OsAndCpu2: React.FC = () => {
@@ -65,28 +67,48 @@ const OsAndCpu2: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            minHeight="320px"
           >
             <CardTitle>OS-CPU Relationship in Process Management</CardTitle>
-            <CardContent>
-              <Row style={{ width: '100%' }}>
+            <CardContent style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <Row style={{ width: '100%', height: '100%' }}>
                 <Column>
-                  <div style={{ border: '1px solid rgba(106, 217, 126, 0.3)', borderRadius: '8px', padding: '0.7rem', height: 'auto' }}>
-                    <h4 style={{ fontSize: '0.95rem', color: 'rgba(106, 217, 126, 0.9)', marginBottom: '0.4rem', textAlign: 'center' }}>OS Hardware Support</h4>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', justifyContent: 'center' }}>
+                  <div style={{ 
+                    border: '1px solid rgba(106, 217, 126, 0.3)', 
+                    borderRadius: '8px', 
+                    padding: '0.95rem',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}>
+                    <h4 style={{ 
+                      fontSize: '1.05rem', 
+                      color: 'rgba(106, 217, 126, 0.9)', 
+                      marginBottom: '0.6rem',
+                      textAlign: 'center' 
+                    }}>OS Hardware Support</h4>
+                    <div style={{ 
+                      display: 'flex', 
+                      flexWrap: 'wrap', 
+                      gap: '0.6rem',
+                      justifyContent: 'center',
+                      flex: 1
+                    }}>
                       <motion.div 
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: 0.1 }}
                         style={{ 
                           background: 'rgba(106, 217, 126, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>📊</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>📊</div>
                         <div>Process Scheduling</div>
                       </motion.div>
                       
@@ -96,14 +118,14 @@ const OsAndCpu2: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.2 }}
                         style={{ 
                           background: 'rgba(106, 217, 126, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>🔄</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>🔄</div>
                         <div>Context Switching</div>
                       </motion.div>
                       
@@ -113,14 +135,14 @@ const OsAndCpu2: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.3 }}
                         style={{ 
                           background: 'rgba(106, 217, 126, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>📝</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>📝</div>
                         <div>Resource Tracking</div>
                       </motion.div>
                       
@@ -130,14 +152,14 @@ const OsAndCpu2: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.4 }}
                         style={{ 
                           background: 'rgba(106, 217, 126, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>🧩</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>🧩</div>
                         <div>Memory Management</div>
                       </motion.div>
                     </div>
@@ -145,23 +167,42 @@ const OsAndCpu2: React.FC = () => {
                 </Column>
                 
                 <Column>
-                  <div style={{ border: '1px solid rgba(74, 144, 226, 0.3)', borderRadius: '8px', padding: '0.7rem', height: 'auto' }}>
-                    <h4 style={{ fontSize: '0.95rem', color: 'rgba(74, 144, 226, 0.9)', marginBottom: '0.4rem', textAlign: 'center' }}>CPU Hardware Features</h4>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', justifyContent: 'center' }}>
+                  <div style={{ 
+                    border: '1px solid rgba(74, 144, 226, 0.3)', 
+                    borderRadius: '8px', 
+                    padding: '0.95rem',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between'
+                  }}>
+                    <h4 style={{ 
+                      fontSize: '1.05rem', 
+                      color: 'rgba(74, 144, 226, 0.9)', 
+                      marginBottom: '0.6rem',
+                      textAlign: 'center' 
+                    }}>CPU Hardware Features</h4>
+                    <div style={{ 
+                      display: 'flex', 
+                      flexWrap: 'wrap', 
+                      gap: '0.6rem',
+                      justifyContent: 'center',
+                      flex: 1
+                    }}>
                       <motion.div 
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: 0.5 }}
                         style={{ 
                           background: 'rgba(74, 144, 226, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>🔍</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>🔍</div>
                         <div>MMU (Memory Management Unit)</div>
                       </motion.div>
                       
@@ -171,14 +212,14 @@ const OsAndCpu2: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.6 }}
                         style={{ 
                           background: 'rgba(74, 144, 226, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>⚡</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>⚡</div>
                         <div>Cache Hierarchies</div>
                       </motion.div>
                       
@@ -188,14 +229,14 @@ const OsAndCpu2: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.7 }}
                         style={{ 
                           background: 'rgba(74, 144, 226, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>⏰</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>⏰</div>
                         <div>Hardware Timers</div>
                       </motion.div>
                       
@@ -205,14 +246,14 @@ const OsAndCpu2: React.FC = () => {
                         transition={{ duration: 0.3, delay: 0.8 }}
                         style={{ 
                           background: 'rgba(74, 144, 226, 0.2)', 
-                          padding: '0.4rem', 
+                          padding: '0.5rem', 
                           borderRadius: '6px',
                           width: '45%',
                           textAlign: 'center',
-                          fontSize: '0.75rem'
+                          fontSize: '0.85rem'
                         }}
                       >
-                        <div style={{ fontSize: '0.9rem', marginBottom: '0.2rem' }}>🔧</div>
+                        <div style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>🔧</div>
                         <div>System Call Instructions</div>
                       </motion.div>
                     </div>
@@ -227,9 +268,9 @@ const OsAndCpu2: React.FC = () => {
           position: 'absolute',
           left: '50%',
           transform: 'translateX(-50%)',
-          width: '60%',
-          maxWidth: '800px',
-          marginTop: '400px'
+          width: '65%',
+          maxWidth: '850px',
+          marginTop: '420px'
         }}>
           <Card 
             initial={{ opacity: 0, y: 20 }}
@@ -244,28 +285,28 @@ const OsAndCpu2: React.FC = () => {
                 height: 'auto', 
                 alignItems: 'center', 
                 justifyContent: 'center', 
-                gap: '1.5rem',
-                padding: '0.5rem 0'
+                gap: '1.8rem',
+                padding: '0.7rem 0'
               }}>
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                   style={{ 
-                    width: '28%', 
+                    width: '30%', 
                     background: 'rgba(106, 217, 126, 0.1)', 
                     border: '1px solid rgba(106, 217, 126, 0.3)',
                     borderRadius: '8px',
-                    padding: '0.8rem',
+                    padding: '1rem',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}
                 >
-                  <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>🖥️</div>
-                  <div style={{ fontSize: '1rem', textAlign: 'center', color: 'rgba(106, 217, 126, 0.9)', marginBottom: '0.3rem' }}>Operating System</div>
-                  <div style={{ fontSize: '0.8rem', textAlign: 'center' }}>Manages resources and provides services</div>
+                  <div style={{ fontSize: '2.4rem', marginBottom: '0.6rem' }}>🖥️</div>
+                  <div style={{ fontSize: '1.1rem', textAlign: 'center', color: 'rgba(106, 217, 126, 0.9)', marginBottom: '0.4rem' }}>Operating System</div>
+                  <div style={{ fontSize: '0.9rem', textAlign: 'center' }}>Manages resources and provides services</div>
                 </motion.div>
                 
                 <motion.div
@@ -302,20 +343,20 @@ const OsAndCpu2: React.FC = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                   style={{ 
-                    width: '28%', 
+                    width: '30%', 
                     background: 'rgba(74, 144, 226, 0.1)', 
                     border: '1px solid rgba(74, 144, 226, 0.3)',
                     borderRadius: '8px',
-                    padding: '0.8rem',
+                    padding: '1rem',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}
                 >
-                  <div style={{ fontSize: '2.2rem', marginBottom: '0.5rem' }}>⚙️</div>
-                  <div style={{ fontSize: '1rem', textAlign: 'center', color: 'rgba(74, 144, 226, 0.9)', marginBottom: '0.3rem' }}>CPU</div>
-                  <div style={{ fontSize: '0.8rem', textAlign: 'center' }}>Executes instructions and processes data</div>
+                  <div style={{ fontSize: '2.4rem', marginBottom: '0.6rem' }}>⚙️</div>
+                  <div style={{ fontSize: '1.1rem', textAlign: 'center', color: 'rgba(74, 144, 226, 0.9)', marginBottom: '0.4rem' }}>CPU</div>
+                  <div style={{ fontSize: '0.9rem', textAlign: 'center' }}>Executes instructions and processes data</div>
                 </motion.div>
               </div>
             </CardContent>

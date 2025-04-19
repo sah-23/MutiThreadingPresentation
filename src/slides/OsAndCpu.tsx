@@ -8,36 +8,41 @@ const ContentContainer = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  gap: 1rem;
-  padding-top: 0.7rem;
+  gap: 0.8rem;
+  padding-top: 0.5rem;
+  overflow: hidden;
 `;
 
 const Row = styled.div`
   display: flex;
   width: 100%;
   gap: 1.5rem;
+  height: 80%; /* Match height of previous slide */
+  overflow: hidden;
 `;
 
 const Column = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.8rem;
+  overflow: hidden;
 `;
 
 const Card = styled(motion.div)<{ borderColor?: string }>`
   background: rgba(25, 35, 60, 0.8);
   border-radius: 12px;
-  padding: 1.1rem;
+  padding: 1.1rem 1.2rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid ${props => props.borderColor || 'rgba(100, 120, 200, 0.3)'};
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 100%;
+  overflow: hidden;
 `;
 
 const CardTitle = styled.h3<{ color?: string }>`
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   color: ${props => props.color || 'var(--primary)'};
   margin-bottom: 0.7rem;
   font-weight: 600;
@@ -47,24 +52,26 @@ const CardTitle = styled.h3<{ color?: string }>`
 `;
 
 const CardContent = styled.div`
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  overflow: hidden;
 `;
 
 const ProcessStep = styled.div`
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
 `;
 
 const StepTitle = styled.div<{ color?: string }>`
   font-weight: bold;
   color: ${props => props.color || 'rgba(74, 144, 226, 1)'};
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+  font-size: 1.15rem; /* Larger font for step titles */
 `;
 
 const StepContent = styled.div`
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.35;
+  line-height: 1.4;
   padding-left: 0.9rem;
+  font-size: 1.05rem; /* Larger font for step content */
 `;
 
 const DiagramContainer = styled.div`
@@ -73,8 +80,8 @@ const DiagramContainer = styled.div`
   align-items: center;
   width: 100%;
   position: relative;
-  margin-top: 0.4rem;
-  margin-bottom: 0.7rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.5rem;
 `;
 
 const DiagramElement = styled(motion.div)<{ bgColor: string }>`
@@ -92,13 +99,13 @@ const DiagramElement = styled(motion.div)<{ bgColor: string }>`
 
 const ElementTitle = styled.div`
   font-weight: bold;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   margin-bottom: 0.25rem;
   text-align: center;
 `;
 
 const ElementIcon = styled.div`
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 0.25rem;
 `;
 
@@ -122,10 +129,10 @@ const Arrow = styled.div`
 `;
 
 const ListItem = styled.div`
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
   display: flex;
   align-items: flex-start;
-  font-size: 0.8rem;
+  font-size: 1.02rem; /* Larger font for list items */
   
   &:before {
     content: "•";

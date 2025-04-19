@@ -51,12 +51,12 @@ const ProcessDiagram = styled.div<{ isMultiThread?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: ${props => props.isMultiThread ? '45%' : '35%'};
+  width: 45%; /* Same width for both diagrams */
 `;
 
 const ProcessCircle = styled.div<{ isMultiThread?: boolean }>`
-  width: ${props => props.isMultiThread ? '220px' : '150px'};
-  height: ${props => props.isMultiThread ? '220px' : '150px'};
+  width: 220px; /* Same size for both circles */
+  height: 220px; /* Same size for both circles */
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.8);
   background: rgba(40, 50, 80, 0.5);
@@ -115,7 +115,7 @@ const ThreadWave = styled.div<{ color: string, rotation?: number }>`
 
 const SingleThread = styled.div`
   width: 2px;
-  height: 80px;
+  height: 120px; /* Increased height to look better in the larger circle */
   background: rgba(255, 255, 255, 0.8);
   position: relative;
   

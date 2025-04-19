@@ -142,14 +142,14 @@ const UserModeThreading: React.FC = () => {
           transition={{ duration: 0.7 }}
         >
           <SectionsContainer>
-            <Section>
+            <Section style={{ marginTop: "0" }}>
               <SectionTitle>Benefits of User-Mode Threading</SectionTitle>
-              <TextContent>
+              <TextContent style={{ marginBottom: "0.2rem", marginTop: "-0.2rem" }}>
                 User-mode threading implements threading functionality entirely in user space through libraries 
                 rather than relying on kernel support. This approach offers several key advantages:
               </TextContent>
               
-              <BenefitsList>
+              <BenefitsList style={{ margin: "0.4rem 0" }}>
                 <BenefitItem
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -167,56 +167,43 @@ const UserModeThreading: React.FC = () => {
                   <HighlightText>Efficient Context Switching:</HighlightText> Significantly faster than process or 
                   kernel-thread switching since it occurs entirely in user space with minimal context saved/restored
                 </BenefitItem>
-                
-                <BenefitItem
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.5 }}
-                >
-                  <HighlightText>Direct Communication:</HighlightText> All threads share the same address space, 
-                  allowing data to be passed by reference with simple synchronization mechanisms
-                </BenefitItem>
               </BenefitsList>
               
-              <DiagramContainer>
+              <DiagramContainer style={{ marginTop: "6.2rem" }}>
                 <svg width="380" height="260" viewBox="0 0 380 260" fill="none" xmlns="http://www.w3.org/2000/svg">
                   {/* Process Container */}
-                  <rect x="10" y="10" width="360" height="200" rx="5" fill="rgba(60, 80, 170, 0.2)" stroke="#6080CC" strokeWidth="2" />
-                  <text x="190" y="30" fontSize="14" textAnchor="middle" fill="white">User Process Address Space</text>
+                  <rect x="10" y="30" width="360" height="200" rx="5" fill="rgba(60, 80, 170, 0.2)" stroke="#6080CC" strokeWidth="2" />
+                  <text x="190" y="50" fontSize="14" textAnchor="middle" fill="white">User Process Address Space</text>
                   
                   {/* Thread Library */}
-                  <rect x="20" y="40" width="340" height="40" rx="4" fill="rgba(80, 100, 200, 0.3)" stroke="#7090E0" strokeWidth="1.5" />
-                  <text x="190" y="65" fontSize="14" textAnchor="middle" fill="white">Thread Library (pthread, std::thread, etc.)</text>
+                  <rect x="20" y="60" width="340" height="40" rx="4" fill="rgba(80, 100, 200, 0.3)" stroke="#7090E0" strokeWidth="1.5" />
+                  <text x="190" y="85" fontSize="14" textAnchor="middle" fill="white">Thread Library (pthread, std::thread, etc.)</text>
                   
                   {/* Thread Management */}
-                  <rect x="30" y="90" width="200" height="110" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#7090E0" strokeWidth="1" />
-                  <text x="130" y="110" fontSize="12" textAnchor="middle" fill="white">Thread Management (User Space)</text>
+                  <rect x="30" y="110" width="200" height="110" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#7090E0" strokeWidth="1" />
+                  <text x="130" y="130" fontSize="12" textAnchor="middle" fill="white">Thread Management (User Space)</text>
                   
                   {/* Threads */}
-                  <circle cx="70" cy="140" r="15" fill="#FF9966" />
-                  <text x="70" y="145" fontSize="12" textAnchor="middle" fill="white">T1</text>
+                  <circle cx="70" cy="160" r="15" fill="#FF9966" />
+                  <text x="70" y="165" fontSize="12" textAnchor="middle" fill="white">T1</text>
                   
-                  <circle cx="130" cy="140" r="15" fill="#66CCFF" />
-                  <text x="130" y="145" fontSize="12" textAnchor="middle" fill="white">T2</text>
+                  <circle cx="130" cy="160" r="15" fill="#66CCFF" />
+                  <text x="130" y="165" fontSize="12" textAnchor="middle" fill="white">T2</text>
                   
-                  <circle cx="190" cy="140" r="15" fill="#99FF99" />
-                  <text x="190" y="145" fontSize="12" textAnchor="middle" fill="white">T3</text>
+                  <circle cx="190" cy="160" r="15" fill="#99FF99" />
+                  <text x="190" y="165" fontSize="12" textAnchor="middle" fill="white">T3</text>
                   
-                  {/* Fast operations callouts */}
-                  <text x="130" y="180" fontSize="10" textAnchor="middle" fill="white">Fast context switching</text>
-                  <text x="70" y="180" fontSize="10" textAnchor="middle" fill="white">Fast creation</text>
-                  <text x="190" y="180" fontSize="10" textAnchor="middle" fill="white">Fast termination</text>
+                  {/* Fast operations callouts - Modified to prevent overlap */}
+                  <text x="70" y="190" fontSize="10" textAnchor="middle" fill="white">Fast creation</text>
+                  <text x="130" y="210" fontSize="10" textAnchor="middle" fill="white">Fast context switching</text>
+                  <text x="190" y="190" fontSize="10" textAnchor="middle" fill="white">Fast termination</text>
                   
                   {/* Shared memory */}
-                  <rect x="240" y="90" width="120" height="110" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#7090E0" strokeWidth="1" />
-                  <text x="300" y="110" fontSize="12" textAnchor="middle" fill="white">Shared Resources</text>
-                  <text x="300" y="130" fontSize="11" textAnchor="middle" fill="white">Memory</text>
-                  <text x="300" y="150" fontSize="11" textAnchor="middle" fill="white">Global Variables</text>
-                  <text x="300" y="170" fontSize="11" textAnchor="middle" fill="white">File Descriptors</text>
-                  
-                  {/* Communication arrows */}
-                  <path d="M85 140 L225 140" stroke="#AADDFF" strokeWidth="1.5" strokeDasharray="3,2" />
-                  <text x="155" y="135" fontSize="10" textAnchor="middle" fill="white">Direct Communication</text>
+                  <rect x="240" y="110" width="120" height="110" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#7090E0" strokeWidth="1" />
+                  <text x="300" y="130" fontSize="12" textAnchor="middle" fill="white">Shared Resources</text>
+                  <text x="300" y="150" fontSize="11" textAnchor="middle" fill="white">Memory</text>
+                  <text x="300" y="170" fontSize="11" textAnchor="middle" fill="white">Global Variables</text>
+                  <text x="300" y="190" fontSize="11" textAnchor="middle" fill="white">File Descriptors</text>
                 </svg>
               </DiagramContainer>
             </Section>
@@ -248,15 +235,18 @@ const UserModeThreading: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 }}
+                  style={{ marginTop: "20px" }}
                 >
                   <svg width="380" height="260" viewBox="0 0 380 250" fill="none" xmlns="http://www.w3.org/2000/svg">
                     {/* User space */}
                     <rect x="10" y="10" width="360" height="110" rx="5" fill="rgba(60, 80, 170, 0.2)" stroke="#6080CC" strokeWidth="2" />
-                    <text x="50" y="30" fontSize="14" fill="white">User Space</text>
                     
                     {/* Process with threads */}
                     <rect x="30" y="40" width="320" height="70" rx="4" fill="rgba(60, 100, 180, 0.2)" stroke="#7090E0" strokeWidth="1" />
                     <text x="190" y="55" fontSize="12" textAnchor="middle" fill="white">Process</text>
+                    
+                    {/* User Process Address Space label - added to match left diagram */}
+                    <text x="190" y="30" fontSize="14" textAnchor="middle" fill="white">User Process Address Space</text>
                     
                     {/* Threads */}
                     <circle cx="70" cy="85" r="15" fill="#FF9966" />
@@ -276,7 +266,6 @@ const UserModeThreading: React.FC = () => {
                     
                     {/* Kernel space */}
                     <rect x="10" y="130" width="360" height="110" rx="5" fill="rgba(40, 60, 100, 0.3)" stroke="#5070B0" strokeWidth="2" />
-                    <text x="50" y="150" fontSize="14" fill="white">Kernel Space</text>
                     
                     {/* System call and blocking */}
                     <path d="M70 100 L70 180" stroke="#FF5555" strokeWidth="2" />
@@ -285,13 +274,16 @@ const UserModeThreading: React.FC = () => {
                     
                     {/* Blocking effect */}
                     <path d="M30 115 L340 115" stroke="#FF5555" strokeWidth="2" strokeDasharray="5,3" />
-                    <text x="320" y="130" fontSize="12" textAnchor="end" fill="white">Entire Process Blocked</text>
+                    <text x="190" y="145" fontSize="12" textAnchor="middle" fill="#FF5555" fontWeight="600">Entire Process Blocked</text>
                     
-                    {/* Idle threads */}
-                    <text x="130" y="105" fontSize="10" fill="white">Blocked</text>
-                    <text x="190" y="105" fontSize="10" fill="white">Blocked</text>
-                    <text x="250" y="105" fontSize="10" fill="white">Blocked</text>
-                    <text x="310" y="105" fontSize="10" fill="white">Blocked</text>
+                    {/* User space and Kernel space labels with arrows */}
+                    {/* User space label */}
+                    <rect x="15" y="15" width="90" height="20" rx="3" fill="rgba(60, 100, 200, 0.6)" />
+                    <text x="60" y="30" fontSize="14" textAnchor="middle" fill="white" fontWeight="500">User Space</text>
+                    
+                    {/* Kernel space label */}
+                    <rect x="15" y="135" width="90" height="20" rx="3" fill="rgba(60, 100, 200, 0.6)" />
+                    <text x="60" y="150" fontSize="14" textAnchor="middle" fill="white" fontWeight="500">Kernel Space</text>
                   </svg>
                 </SystemCallDiagram>
               </DiagramContainer>

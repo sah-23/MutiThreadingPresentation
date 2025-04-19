@@ -70,6 +70,7 @@ const RelationshipDiagram = styled.div`
   margin: 1.2rem 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 `;
 
 const CpuContainer = styled(motion.div)`
@@ -151,42 +152,47 @@ const ThreadDot = styled(motion.div)<{ color: string }>`
 
 const ThreadQueue = styled.div`
   position: absolute;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
+  right: -180px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
+  flex-direction: column;
   background: rgba(30, 40, 60, 0.4);
   border: 1px solid rgba(100, 120, 200, 0.3);
-  border-radius: 25px;
-  padding: 8px 15px;
+  border-radius: 15px;
+  padding: 10px;
 `;
 
 const QueueLabel = styled.div`
   position: absolute;
   top: -25px;
-  left: 15px;
+  left: 0;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
 `;
 
 const SchedulerArrow = styled(motion.div)`
   position: absolute;
-  width: 50px;
-  height: 40px;
-  border-left: 2px dashed rgba(255, 255, 255, 0.5);
-  border-bottom: 2px dashed rgba(255, 255, 255, 0.5);
-  top: -10px;
+  width: 100px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  top: 60px;
+  right: -110px;
+  transform: rotate(-25deg);
+  transform-origin: right;
   
   &:after {
     content: '';
     position: absolute;
-    bottom: -8px;
-    left: -8px;
+    left: 0;
+    top: -4px;
     width: 0;
     height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 10px solid rgba(255, 255, 255, 0.5);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 10px solid rgba(255, 255, 255, 0.5);
   }
 `;
 
@@ -208,35 +214,6 @@ const ThreadVsCpuCore2: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <CpuLabel>CPU</CpuLabel>
-              
-              <ThreadQueue>
-                <QueueLabel>Thread Queue</QueueLabel>
-                <ThreadDot 
-                  color="#f56d42"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.8 }}
-                >T5</ThreadDot>
-                <ThreadDot 
-                  color="#f56d42"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 0.9 }}
-                >T6</ThreadDot>
-                <ThreadDot 
-                  color="#f56d42"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3, delay: 1.0 }}
-                >T7</ThreadDot>
-              </ThreadQueue>
-              
-              <SchedulerArrow
-                style={{ left: '30%' }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.2 }}
-              />
               
               <CoreRow>
                 <CoreBox
@@ -296,6 +273,34 @@ const ThreadVsCpuCore2: React.FC = () => {
                 </CoreBox>
               </CoreRow>
             </CpuContainer>
+            
+            <SchedulerArrow
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 1.2 }}
+            />
+            
+            <ThreadQueue>
+              <QueueLabel>Thread Queue</QueueLabel>
+              <ThreadDot 
+                color="#f56d42"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.8 }}
+              >T5</ThreadDot>
+              <ThreadDot 
+                color="#f56d42"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 0.9 }}
+              >T6</ThreadDot>
+              <ThreadDot 
+                color="#f56d42"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.3, delay: 1.0 }}
+              >T7</ThreadDot>
+            </ThreadQueue>
           </RelationshipDiagram>
           
           <div style={{ display: 'flex', gap: '1rem' }}>
