@@ -39,14 +39,14 @@ const PresentationOverview: React.FC = () => {
   };
 
   const topics = [
-    "Basic concepts of multi-threading",
-    "Hardware support for threading",
-    "Thread scheduling and management",
-    "Performance considerations",
-    "Synchronization mechanisms",
-    "Modern CPU threading features",
-    "Practical implementations",
-    "Advanced concepts and future trends"
+    "Processes, jobs, and the operating system",
+    "Concurrency vs. parallelism concepts",
+    "Thread vs. process architecture",
+    "Thread scheduling and time slicing",
+    "Thread models and implementation",
+    "Race conditions and synchronization mechanisms",
+    "Python threading and the Global Interpreter Lock (GIL)",
+    "Solutions for true parallelism in Python"
   ];
 
   return (
