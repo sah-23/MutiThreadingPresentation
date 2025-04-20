@@ -81,9 +81,6 @@ The build artifacts will be stored in the `dist/` directory.
 
 This presentation was created as an educational resource to help developers understand the complexities of multi-threading and modern CPU architecture. It combines theoretical knowledge with practical examples to provide a comprehensive learning experience.
 
-## 👨‍💻 Author
-
-**Sahand Mazrue** - *Software Engineer*
 
 ## 📄 License
 
