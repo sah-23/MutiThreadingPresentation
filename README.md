@@ -1,6 +1,6 @@
 # Multi-Threading and How Modern CPUs Handle It in 2025
 
-![Multi-Threading Presentation Preview](./public/preview.png)
+![Multi-Threading Presentation Preview](./preview.png)
 
 ## 🚀 Overview
 
