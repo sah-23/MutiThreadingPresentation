@@ -95,4 +95,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-> **Note:** Save the title slide image shown in this README as `preview.png` in the `public` directory of your repository. 
+
